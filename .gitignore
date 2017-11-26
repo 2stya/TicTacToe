@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/TicTacToe.Console/bin/Debug/netcoreapp2.0
+/TicTacToe.Console/obj
+/TicTacToe.Runner/bin/Debug/netcoreapp2.0
+/TicTacToe.Runner/obj
+/.vs

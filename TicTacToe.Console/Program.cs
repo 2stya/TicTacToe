@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TicTacToe.Console
+namespace TicTacToe
 {
     class Program
     {

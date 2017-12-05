@@ -4,7 +4,8 @@
     {
         public static void Main(string[] args)
         {
-            Game.StartGame();
+            IViewer viewer = new ConsoleViewer();
+            Game game = new Game(viewer);
         }
     }
 }

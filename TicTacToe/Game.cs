@@ -1,12 +1,25 @@
 ﻿using System;
+using System.Collections;
+using System.Linq;
 
 namespace TicTacToe
 {
-    public static class Game
+    public class Game
     {
-        public static void StartGame()
+        public Field field;
+        public IViewer viewer;
+
+        public Game(IViewer viewer)
         {
-            Console.WriteLine("Field");
+            field = new Field();
+
+            StartGame(viewer);
+        }
+
+        public void StartGame(IViewer viewer)
+        {
+            Console.WriteLine("Field:");
+            viewer.DrawField(field);
         }
     }
 }

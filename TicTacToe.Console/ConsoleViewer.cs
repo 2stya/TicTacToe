@@ -9,15 +9,22 @@ namespace TicTacToe.Console
             
         }
 
-        public void DrawField(Field field)
+        public string PrepareStringToDrawField(Field field)
         {
             var marksOnField = field.GetMarksOnField().Select(i => i.ToString().Replace("Empty", " ")).ToArray();
+            return ($"┌-┬-┬-┐\n" +
+                    $"|{marksOnField[0]}|{marksOnField[1]}|{marksOnField[2]}|\n" +
+                    $"|{marksOnField[3]}|{marksOnField[4]}|{marksOnField[5]}|\n" +
+                    $"|{marksOnField[6]}|{marksOnField[7]}|{marksOnField[8]}|\n" +
+                    $"└-┴-┴-┘");
 
-            System.Console.WriteLine("┌-┬-┬-┐");
-            System.Console.WriteLine($"|{marksOnField[0]}|{marksOnField[1]}|{marksOnField[2]}|");
-            System.Console.WriteLine($"|{marksOnField[3]}|{marksOnField[4]}|{marksOnField[5]}|");
-            System.Console.WriteLine($"|{marksOnField[6]}|{marksOnField[7]}|{marksOnField[8]}|");
-            System.Console.WriteLine("└-┴-┴-┘");
+        }
+
+        public void DrawField(Field field)
+        {
+            string stringToDrawField = PrepareStringToDrawField(field);
+
+            System.Console.WriteLine(stringToDrawField);
         }
     }
 }

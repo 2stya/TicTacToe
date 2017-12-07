@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 
 namespace TicTacToe
 {
@@ -41,7 +39,12 @@ namespace TicTacToe
 
         public bool SetMark(MarkType mark, MarkPlace place)
         {
-            return true;
+            if (marksOnField[(int) place] == MarkType.Empty)
+            {
+                marksOnField[(int) place] = mark;
+                return true;
+            }
+            return false;
         }
     }
 }

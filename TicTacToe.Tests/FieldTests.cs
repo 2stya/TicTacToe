@@ -32,5 +32,16 @@ namespace TicTacToe.Tests
             var fieldWithOneMark = _field.GetMarksOnField();
             Assert.Equal(MarkType.O, fieldWithOneMark[0]);
         }
+
+        [Fact]
+        public void MarksCanNotBeSetTwiceAtTheSamePlace()
+        {
+            _field.SetMark(MarkType.X, MarkPlace.BottomRight);
+            _field.SetMark(MarkType.O, MarkPlace.BottomRight);
+
+            var fieldWithMark = _field.GetMarksOnField();
+
+            Assert.Equal(MarkType.X, fieldWithMark[8]);
+        }
     }
 }

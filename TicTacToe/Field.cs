@@ -24,7 +24,7 @@ namespace TicTacToe
 
     public class Field
     {
-        private MarkType[] marksOnField;
+        private readonly MarkType[] marksOnField;
 
         public Field()
         {

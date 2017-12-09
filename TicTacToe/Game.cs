@@ -1,11 +1,8 @@
-﻿using System;
-
-namespace TicTacToe
+﻿namespace TicTacToe
 {
     public class Game
     {
-        public Field field;
-        public IViewer viewer;
+        private Field field;
 
         public Game(IViewer viewer)
         {

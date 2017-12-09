@@ -22,8 +22,30 @@ namespace TicTacToe.Console
         public void DrawField(Field field)
         {
             string stringToDrawField = PrepareStringToDrawField(field);
-
+            System.Console.Clear();
             System.Console.WriteLine(stringToDrawField);
+        }
+
+        public string PrepareStringToDrawLogo()
+        {
+            return @"  .-----------------------------------------------------------------.
+ /  .-.                                                         .-.  \
+|  /   \                                                       /   \  |
+| |\_.  |                    TIC TAC TOE                      |    /| |
+|\|  | /|                                                     |\  | |/|
+| `---' |             Press Enter key to continue...          | `---' |
+|       |                                                     |       | 
+|       |-----------------------------------------------------|       |
+\       |                                                     |       /
+ \     /                                                       \     /
+  `---'                                                         `---'";
+        }
+
+        public void ShowLogo()
+        {
+            System.Console.Clear();
+            System.Console.WriteLine(PrepareStringToDrawLogo());
+            System.Console.Read();
         }
     }
 }

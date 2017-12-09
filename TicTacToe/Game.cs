@@ -16,7 +16,7 @@ namespace TicTacToe
 
         public void StartGame(IViewer viewer)
         {
-            Console.WriteLine("Field:");
+            viewer.ShowLogo();
             viewer.DrawField(field);
         }
     }

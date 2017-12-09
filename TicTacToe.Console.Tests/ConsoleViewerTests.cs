@@ -17,7 +17,7 @@ namespace TicTacToe.Console.Tests
             Field field = new Field();
             string fieldDrawString = viewer.PrepareStringToDrawField(field);
 
-            Assert.StartsWith("┌-┬-┬-┐\n", fieldDrawString);
+            Assert.StartsWith("┌-┬-┬-┐", fieldDrawString);
             Assert.EndsWith("└-┴-┴-┘", fieldDrawString);
         }
 
@@ -44,9 +44,11 @@ namespace TicTacToe.Console.Tests
         public void VerifyUserInstructionsWhereToPutMark()
         {
             string actualInstructions = viewer.PrepareStringToDrawUserInstructions();
-            string expectedInstructions = @"1-2-3
-4-5-6
-7-8-9";
+            string expectedInstructions = @"1|2|3
+ -----
+4|5|6
+ -----
+7|8|9";
             Assert.Equal(expectedInstructions, actualInstructions);
         }
     }

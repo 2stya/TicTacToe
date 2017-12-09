@@ -14,8 +14,10 @@ namespace TicTacToe.Console
             var marksOnField = field.GetMarksOnField().Select(i => i.ToString().Replace("Empty", " ")).ToArray();
             return "┌-┬-┬-┐\n" +
                     $"|{marksOnField[0]}|{marksOnField[1]}|{marksOnField[2]}|\n" +
-                    $"|{marksOnField[3]}|{marksOnField[4]}|{marksOnField[5]}|\n" +
-                    $"|{marksOnField[6]}|{marksOnField[7]}|{marksOnField[8]}|\n" +
+                    "├-----┤\n" + 
+                    $"|{marksOnField[3]}|{marksOnField[4]}|{marksOnField[5]}|\r\n" +
+                    "├-----┤\n" +
+                    $"|{marksOnField[6]}|{marksOnField[7]}|{marksOnField[8]}|\r\n" +
                     "└-┴-┴-┘";
         }
 
@@ -50,7 +52,7 @@ namespace TicTacToe.Console
 
         public string PrepareStringToDrawUserInstructions()
         {
-            throw new System.NotImplementedException();
+            return "1|2|3\r\n -----\r\n4|5|6\r\n -----\r\n7|8|9";
         }
 
         public void DrawUserInstructions()

@@ -47,5 +47,15 @@ namespace TicTacToe.Console
             System.Console.WriteLine(PrepareStringToDrawLogo());
             System.Console.Read();
         }
+
+        public string PrepareStringToDrawUserInstructions()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DrawUserInstructions()
+        {
+            System.Console.WriteLine(PrepareStringToDrawUserInstructions());
+        }
     }
 }

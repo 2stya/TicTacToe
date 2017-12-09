@@ -39,5 +39,15 @@ namespace TicTacToe.Console.Tests
 
             Assert.Equal(expectedLogo, actualLogo);
         }
+
+        [Fact]
+        public void VerifyUserInstructionsWhereToPutMark()
+        {
+            string actualInstructions = viewer.PrepareStringToDrawUserInstructions();
+            string expectedInstructions = @"1-2-3
+4-5-6
+7-8-9";
+            Assert.Equal(expectedInstructions, actualInstructions);
+        }
     }
 }

@@ -4,5 +4,6 @@
     {
         void DrawField(Field field);
         void ShowLogo();
+        void DrawUserInstructions();
     }
 }

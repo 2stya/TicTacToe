@@ -4,7 +4,7 @@ namespace TicTacToe.Console.Tests
 {
     public class ConsoleViewerTests
     {
-        private ConsoleViewer viewer;
+        private readonly ConsoleViewer viewer;
 
         public ConsoleViewerTests()
         {
@@ -12,7 +12,7 @@ namespace TicTacToe.Console.Tests
         }
 
         [Fact]
-        public void VerifyHeaderAndFooterLookOfField()
+        public void PrepareStringToDrawField_OnCreation_ReturnsStringWithTopAndBottomBorders()
         {
             Field field = new Field();
             string fieldDrawString = viewer.PrepareStringToDrawField(field);
@@ -22,7 +22,7 @@ namespace TicTacToe.Console.Tests
         }
 
         [Fact]
-        public void VerifyLogo()
+        public void PrepareStringToDrawLogo_OnCreation_ReturnsLogo()
         {
             string actualLogo = viewer.PrepareStringToDrawLogo();
             string expectedLogo = @"  .-----------------------------------------------------------------.
@@ -41,7 +41,7 @@ namespace TicTacToe.Console.Tests
         }
 
         [Fact]
-        public void VerifyUserInstructionsWhereToPutMark()
+        public void PrepareStringToDrawUserInstructions_OnCreation_ReturnsUserInstructions()
         {
             string actualInstructions = viewer.PrepareStringToDrawUserInstructions();
             string expectedInstructions = @" 1|2|3

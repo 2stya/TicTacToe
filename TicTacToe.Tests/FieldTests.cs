@@ -1,31 +1,36 @@
 using System.Linq;
+
 using Xunit;
 
 namespace TicTacToe.Tests
 {
     public class FieldTests
     {
-        private Field _field;
+        private readonly Field _field;
+
         public FieldTests()
         {
             _field = new Field();
         }
 
         [Fact]
-        public void FieldShouldContain9PlacesForMarks()
+        public void Field_OnCreation_Contains9PlacesForMarks()
         {
             Assert.Equal(9, _field.GetMarksOnField().Length);
         }
 
         [Fact]
-        public void NewFieldShouldHaveOnlyEmptyMarks()
+        public void Field_OnCreation_HaventNonEmptyMarks()
         {
-            int emptyMarksCount = _field.GetMarksOnField().Select(i => i == MarkType.Empty).Count();
-            Assert.Equal(9, emptyMarksCount);
+            MarkType[] emptyFieldMarks = _field.GetMarksOnField();
+
+            int notEmptyMarksCount = emptyFieldMarks.Count(type => type != MarkType.Empty);
+
+            Assert.Equal(0, notEmptyMarksCount);
         }
 
         [Fact]
-        public void SetOToZeroPositionShouldFillTopLeftFieldPlace()
+        public void SetMark_OmarkToTopLeftPosition_OmarkAsFirstFieldElement()
         {
             _field.SetMark(MarkType.O, MarkPlace.TopLeft);
 
@@ -34,13 +39,12 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void MarksCanNotBeSetTwiceAtTheSamePlace()
+        public void SetMark_OnBusyPlace_NotChangeInitialMark()
         {
             _field.SetMark(MarkType.X, MarkPlace.BottomRight);
             _field.SetMark(MarkType.O, MarkPlace.BottomRight);
 
             var fieldWithMark = _field.GetMarksOnField();
-
             Assert.Equal(MarkType.X, fieldWithMark[8]);
         }
     }

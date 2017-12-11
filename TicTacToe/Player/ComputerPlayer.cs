@@ -11,5 +11,10 @@
         {
             throw new System.NotImplementedException();
         }
+
+        public override int DefinePlayersMove()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

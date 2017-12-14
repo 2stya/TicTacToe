@@ -7,12 +7,12 @@
 
         }
 
-        public override void MakeAMove()
+        public override int DefinePlayersMove()
         {
             throw new System.NotImplementedException();
         }
 
-        public override int DefinePlayersMove()
+        public override void MakeAMove(MarkPlace markPlace)
         {
             throw new System.NotImplementedException();
         }

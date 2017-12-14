@@ -9,7 +9,7 @@
             mark = markType;
         }
 
-        public abstract void MakeAMove();
+        public abstract void MakeAMove(MarkPlace markPlace);
 
         public abstract int DefinePlayersMove();
     }

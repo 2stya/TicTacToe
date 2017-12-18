@@ -12,14 +12,40 @@ namespace TicTacToe.Player
             }
         }
 
-        public override int DefinePlayersMove()
+        public override MarkPlace DefinePlayersMove(string userInput)
+        {
+            int markPlaceIndex;
+
+            if (string.IsNullOrWhiteSpace(userInput))
+            {
+                throw new ArgumentException("Value cannot be null or whitespace.", nameof(userInput));
+            }
+
+            try
+            {
+                markPlaceIndex = int.Parse(userInput);
+            }
+            catch (FormatException)
+            {
+                throw new ArgumentException("Incorrect input");
+            }
+
+            if (markPlaceIndex < 0 || markPlaceIndex > 8)
+            {
+                throw new ArgumentOutOfRangeException("Move can be done only inside of field");
+            }
+
+            return (MarkPlace) markPlaceIndex;
+        }
+
+        public override void MakeAMove(Field field, MarkPlace markPlace)
         {
             throw new NotImplementedException();
         }
 
-        public override void MakeAMove(MarkPlace markPlace)
+        private string GetHumanChoice()
         {
-            throw new NotImplementedException();
+            return Console.ReadKey(true).ToString();
         }
     }
 }

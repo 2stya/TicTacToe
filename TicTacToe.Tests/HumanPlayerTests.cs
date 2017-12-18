@@ -13,13 +13,13 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void MakeAMove_InOccupiedPlace_ThrowException()
+        public void DefinePlayersMove_ReceivingSix_ReturnsBottomLeftMarkPlace()
         {
-            Field field = new Field();
-            HumanPlayer player = new HumanPlayer(MarkType.X);
-            player.MakeAMove(MarkPlace.BottomLeft);
+            HumanPlayer player = new HumanPlayer(MarkType.O);
 
-            Assert.Throws<ArgumentException>(() => player.MakeAMove(MarkPlace.BottomLeft));
+            MarkPlace markPlace = player.DefinePlayersMove("6");
+
+            Assert.Equal(MarkPlace.BottomLeft, markPlace);
         }
     }
 }

@@ -9,8 +9,8 @@
             mark = markType;
         }
 
-        public abstract void MakeAMove(MarkPlace markPlace);
+        public abstract void MakeAMove(Field field, MarkPlace markPlace);
 
-        public abstract int DefinePlayersMove();
+        public abstract MarkPlace DefinePlayersMove(string userInput);
     }
 }

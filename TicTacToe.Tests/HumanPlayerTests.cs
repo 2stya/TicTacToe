@@ -21,5 +21,24 @@ namespace TicTacToe.Tests
 
             Assert.Equal(MarkPlace.BottomLeft, markPlace);
         }
+
+        [Fact]
+        public void MakeAMove_WithFieldAndCenterRightMarkPlacePassed_SetThePlayersMarkToFifthMemberOfFieldNotToOtherPlaces()
+        {
+            Field field = new Field();
+            HumanPlayer player = new HumanPlayer(MarkType.X);
+            MarkPlace markPlace = MarkPlace.CenterRight;
+            MarkType[] expectedMarks = new MarkType[]
+            {
+                MarkType.Empty, MarkType.Empty, MarkType.Empty,
+                MarkType.Empty, MarkType.Empty, MarkType.X,
+                MarkType.Empty, MarkType.Empty, MarkType.Empty
+            };
+
+            player.MakeAMove(field, markPlace);
+            var marks = field.GetMarksOnField();
+
+            Assert.Equal(expectedMarks, marks);
+        }
     }
 }

@@ -1,15 +1,22 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace TicTacToe.Player
 {
     public class HumanPlayer : Player
     {
+        private readonly MarkType _markType;
+
         public HumanPlayer(MarkType markType) : base(markType)
         {
             if (markType == MarkType.Empty)
             {
                 throw new ArgumentException("HumanPlayer can be created only with X or O MarkType parameter");
             }
+            if (!Enum.IsDefined(typeof(MarkType), markType))
+                throw new InvalidEnumArgumentException(nameof(markType), (int) markType, typeof(MarkType));
+
+            _markType = markType;
         }
 
         public override MarkPlace DefinePlayersMove(string userInput)
@@ -40,7 +47,7 @@ namespace TicTacToe.Player
 
         public override void MakeAMove(Field field, MarkPlace markPlace)
         {
-            throw new NotImplementedException();
+            field.SetMark(this._markType, markPlace);
         }
 
         private string GetHumanChoice()

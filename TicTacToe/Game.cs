@@ -1,22 +1,26 @@
-﻿using System;
+﻿using TicTacToe.Player;
 
 namespace TicTacToe
 {
     public class Game
     {
-        private Field field;
+        private readonly Field _field;
+        private Player.Player _humanPlayer;
+
 
         public Game(IViewer viewer)
         {
-            field = new Field();
-
             StartGame(viewer);
+
+            _field = new Field();
+            _humanPlayer = new HumanPlayer(MarkType.X);
         }
 
         public void StartGame(IViewer viewer)
         {
             viewer.ShowLogo();
-            viewer.DrawField(field);
+
+            viewer.DrawField(_field);
             viewer.DrawUserInstructions();
         }
     }

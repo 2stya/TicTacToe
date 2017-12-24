@@ -1,18 +1,17 @@
-﻿namespace TicTacToe.Player
+﻿using System;
+
+namespace TicTacToe.Player
 {
     public class ComputerPlayer : Player
     {
-        public ComputerPlayer(MarkType markType) : base(markType)
-        {
+        public ComputerPlayer(MarkType mark) : base(mark) { }
 
+        public override int GetPlayerChoice()
+        {
+            return new Random(9).Next();
         }
 
-        public override MarkPlace DefinePlayersMove(string input)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void MakeAMove(Field field, MarkPlace markPlace)
+        public override void MakeAMove(Field field, MarkType markType, MarkPlace markPlace)
         {
             throw new System.NotImplementedException();
         }

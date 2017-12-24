@@ -1,16 +1,55 @@
-﻿namespace TicTacToe.Player
+﻿using System;
+using System.ComponentModel;
+
+namespace TicTacToe.Player
 {
     public abstract class Player
     {
-        private MarkType mark;
+        public MarkType Mark { get; }
 
-        public Player(MarkType markType)
+        protected Player(MarkType mark)
         {
-            mark = markType;
+            if (mark == MarkType.Empty)
+            {
+                throw new ArgumentException("HumanPlayer can be created only with X or O Mark parameter");
+            }
+            if (!Enum.IsDefined(typeof(MarkType), mark))
+                throw new InvalidEnumArgumentException(nameof(mark), (int)mark, typeof(MarkType));
+
+            Mark = mark;
         }
 
-        public abstract void MakeAMove(Field field, MarkPlace markPlace);
+        public virtual void MakeAMove(Field field, MarkType markType, MarkPlace markPlace)
+        {
+            field.SetMark(markType, markPlace);
+        }
 
-        public abstract MarkPlace DefinePlayersMove(string userInput);
+        public virtual MarkPlace GetComputerChoice(string userInput)
+        {
+            int markPlaceIndex;
+
+            if (string.IsNullOrWhiteSpace(userInput))
+            {
+                throw new ArgumentException("Value cannot be null or whitespace.", nameof(userInput));
+            }
+
+            try
+            {
+                markPlaceIndex = int.Parse(userInput);
+            }
+            catch (FormatException)
+            {
+                throw new ArgumentException("Incorrect input");
+            }
+
+            if (markPlaceIndex < 0 || markPlaceIndex > 8)
+            {
+                throw new ArgumentOutOfRangeException($"Move can be done only inside of field");
+            }
+
+            return (MarkPlace)markPlaceIndex;
+        }
+
+        public abstract int GetPlayerChoice();
     }
 }

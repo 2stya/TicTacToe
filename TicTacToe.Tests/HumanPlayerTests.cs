@@ -17,7 +17,7 @@ namespace TicTacToe.Tests
         {
             HumanPlayer player = new HumanPlayer(MarkType.O);
 
-            MarkPlace markPlace = player.DefinePlayersMove("6");
+            MarkPlace markPlace = player.GetComputerChoice("6");
 
             Assert.Equal(MarkPlace.BottomLeft, markPlace);
         }
@@ -35,7 +35,7 @@ namespace TicTacToe.Tests
                 MarkType.Empty, MarkType.Empty, MarkType.Empty
             };
 
-            player.MakeAMove(field, markPlace);
+            player.MakeAMove(field, player.Mark, markPlace);
             var marks = field.GetMarksOnField();
 
             Assert.Equal(expectedMarks, marks);

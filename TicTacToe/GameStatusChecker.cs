@@ -4,7 +4,7 @@
     {
         GameInProgress,
         XWins,
-        YWins,
+        OWins,
         Draw
     }
 

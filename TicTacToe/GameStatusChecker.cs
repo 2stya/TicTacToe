@@ -16,25 +16,62 @@
 
             GameStatus status = CheckIfHorizontalLineIsFilled(fieldMarks);
 
+            if (status == GameStatus.GameInProgress)
+            {
+                status = CheckIfVerticalLineIsFilled(fieldMarks);
+            }
 
-            return GameStatus.GameInProgress;
+            return status;
         }
 
         private static GameStatus CheckIfHorizontalLineIsFilled(MarkType[] fieldMarks)
         {
-            for (int i = 0; i < 3; i++)
+            for (var i = 0; i < 3; i++)
             {
-                int counterX = 0;
-                int counterO = 0;
-                for (int j = 0; j < 3; j++)
+                var counterX = 0;
+                var counterO = 0;
+                for (var j = 0; j < 3; j++)
                 {
-                    if (fieldMarks[i * 3 + j] == MarkType.X)
+                    switch (fieldMarks[i * 3 + j])
                     {
-                        counterX++;
+                        case MarkType.X:
+                            counterX++;
+                            break;
+                        case MarkType.O:
+                            counterO++;
+                            break;
                     }
-                    else if (fieldMarks[i * 3 + j] == MarkType.O)
+                }
+
+                if (counterX == 3)
+                {
+                    return GameStatus.XWins;
+                }
+                else if (counterO == 3)
+                {
+                    return GameStatus.OWins;
+                }
+            }
+
+            return GameStatus.GameInProgress;
+        }
+
+        private static GameStatus CheckIfVerticalLineIsFilled(MarkType[] fieldMarks)
+        {
+            for (var i = 0; i < 3; i++)
+            {
+                var counterX = 0;
+                var counterO = 0;
+                for (var j = 0; j < 3; j++)
+                {
+                    switch (fieldMarks[j * 3 + i])
                     {
-                        counterO++;
+                        case MarkType.X:
+                            counterX++;
+                            break;
+                        case MarkType.O:
+                            counterO++;
+                            break;
                     }
                 }
 

@@ -18,7 +18,7 @@ namespace TicTacToe.Tests
             _field.SetMark(MarkType.X, MarkPlace.TopCenter);
             _field.SetMark(MarkType.X, MarkPlace.TopRight);
 
-            GameStatus gameStatus = GameStatusChecker.CheckIfGameHasEnded(_field);
+            GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
 
             Assert.Equal(GameStatus.XWins, gameStatus);
         }
@@ -30,7 +30,7 @@ namespace TicTacToe.Tests
             _field.SetMark(MarkType.O, MarkPlace.BottomCenter);
             _field.SetMark(MarkType.O, MarkPlace.BottomRight);
 
-            GameStatus gameStatus = GameStatusChecker.CheckIfGameHasEnded(_field);
+            GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
 
             Assert.Equal(GameStatus.OWins, gameStatus);
         }
@@ -38,7 +38,7 @@ namespace TicTacToe.Tests
         [Fact]
         public void CheckIfGameHasEnded_OnEmptyField_ReturnsGameInProgress()
         {
-            GameStatus gameStatus = GameStatusChecker.CheckIfGameHasEnded(_field);
+            GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
 
             Assert.Equal(GameStatus.GameInProgress, gameStatus);
         }
@@ -50,7 +50,7 @@ namespace TicTacToe.Tests
             _field.SetMark(MarkType.O, MarkPlace.CenterLeft);
             _field.SetMark(MarkType.O, MarkPlace.BottomLeft);
 
-            GameStatus gameStatus = GameStatusChecker.CheckIfGameHasEnded(_field);
+            GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
 
             Assert.Equal(GameStatus.OWins, gameStatus);
         }
@@ -62,7 +62,7 @@ namespace TicTacToe.Tests
             _field.SetMark(MarkType.X, MarkPlace.CenterCenter);
             _field.SetMark(MarkType.X, MarkPlace.BottomCenter);
 
-            GameStatus gameStatus = GameStatusChecker.CheckIfGameHasEnded(_field);
+            GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
 
             Assert.Equal(GameStatus.XWins, gameStatus);
         }
@@ -74,9 +74,33 @@ namespace TicTacToe.Tests
             _field.SetMark(MarkType.O, MarkPlace.CenterRight);
             _field.SetMark(MarkType.O, MarkPlace.BottomRight);
 
-            GameStatus gameStatus = GameStatusChecker.CheckIfGameHasEnded(_field);
+            GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
 
             Assert.Equal(GameStatus.OWins, gameStatus);
+        }
+
+        [Fact]
+        public void CheckIfGameHasEnded_OnOWinsDiagonallyRight_ReturnsOWins()
+        {
+            _field.SetMark(MarkType.O, MarkPlace.TopRight);
+            _field.SetMark(MarkType.O, MarkPlace.CenterCenter);
+            _field.SetMark(MarkType.O, MarkPlace.BottomLeft);
+
+            GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
+
+            Assert.Equal(GameStatus.OWins, gameStatus);
+        }
+
+        [Fact]
+        public void CheckIfGameHasEnded_OnXWinsDiagonallyLeft_ReturnsXWins()
+        {
+            _field.SetMark(MarkType.X, MarkPlace.TopLeft);
+            _field.SetMark(MarkType.X, MarkPlace.CenterCenter);
+            _field.SetMark(MarkType.X, MarkPlace.BottomRight);
+
+            GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
+
+            Assert.Equal(GameStatus.XWins, gameStatus);
         }
     }
 }

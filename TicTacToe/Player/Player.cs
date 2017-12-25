@@ -19,6 +19,8 @@ namespace TicTacToe.Player
             Mark = mark;
         }
 
+        public abstract int GetPlayerChoice();
+
         public void MakeAMove(Field field, MarkType markType, MarkPlace markPlace)
         {
             field.SetMark(markType, markPlace);
@@ -49,7 +51,5 @@ namespace TicTacToe.Player
 
             return (MarkPlace)markPlaceIndex;
         }
-
-        public abstract int GetPlayerChoice();
     }
 }

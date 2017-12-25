@@ -7,7 +7,6 @@ namespace TicTacToe
         private readonly Field _field;
         private Player.Player _humanPlayer;
 
-
         public Game(IViewer viewer)
         {
             StartGame(viewer);

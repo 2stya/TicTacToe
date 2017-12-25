@@ -4,21 +4,21 @@ namespace TicTacToe.Tests
 {
     public class GameStatusCheckerTests
     {
-        private Field field;
+        private readonly Field _field;
 
         public GameStatusCheckerTests()
         {
-            field = new Field();
+            _field = new Field();
         }
 
         [Fact]
         public void CheckIfGameHasEnded_OnXWinsHorizontallyTop_ReturnsXWins()
         {
-            field.SetMark(MarkType.X, MarkPlace.TopLeft);
-            field.SetMark(MarkType.X, MarkPlace.TopCenter);
-            field.SetMark(MarkType.X, MarkPlace.TopRight);
+            _field.SetMark(MarkType.X, MarkPlace.TopLeft);
+            _field.SetMark(MarkType.X, MarkPlace.TopCenter);
+            _field.SetMark(MarkType.X, MarkPlace.TopRight);
 
-            var gameStatus = GameStatusChecker.CheckIfGameHasEnded(field);
+            GameStatus gameStatus = GameStatusChecker.CheckIfGameHasEnded(_field);
 
             Assert.Equal(GameStatus.XWins, gameStatus);
         }
@@ -26,11 +26,11 @@ namespace TicTacToe.Tests
         [Fact]
         public void CheckIfGameHasEnded_OnYWinsHorizontallyBottom_ReturnsOWins()
         {
-            field.SetMark(MarkType.O, MarkPlace.BottomLeft);
-            field.SetMark(MarkType.O, MarkPlace.BottomCenter);
-            field.SetMark(MarkType.O, MarkPlace.BottomRight);
+            _field.SetMark(MarkType.O, MarkPlace.BottomLeft);
+            _field.SetMark(MarkType.O, MarkPlace.BottomCenter);
+            _field.SetMark(MarkType.O, MarkPlace.BottomRight);
 
-            var gameStatus = GameStatusChecker.CheckIfGameHasEnded(field);
+            GameStatus gameStatus = GameStatusChecker.CheckIfGameHasEnded(_field);
 
             Assert.Equal(GameStatus.OWins, gameStatus);
         }
@@ -38,7 +38,7 @@ namespace TicTacToe.Tests
         [Fact]
         public void CheckIfGameHasEnded_OnEmptyField_ReturnsGameInProgress()
         {
-            var gameStatus = GameStatusChecker.CheckIfGameHasEnded(field);
+            GameStatus gameStatus = GameStatusChecker.CheckIfGameHasEnded(_field);
 
             Assert.Equal(GameStatus.GameInProgress, gameStatus);
         }

@@ -17,7 +17,7 @@ namespace TicTacToe.Tests
         {
             HumanPlayer player = new HumanPlayer(MarkType.O);
 
-            MarkPlace markPlace = player.GetComputerChoice("6");
+            MarkPlace markPlace = player.GetMarkPlace("6");
 
             Assert.Equal(MarkPlace.BottomLeft, markPlace);
         }
@@ -25,10 +25,10 @@ namespace TicTacToe.Tests
         [Fact]
         public void MakeAMove_WithFieldAndCenterRightMarkPlacePassed_SetThePlayersMarkToFifthMemberOfFieldNotToOtherPlaces()
         {
-            Field field = new Field();
-            HumanPlayer player = new HumanPlayer(MarkType.X);
-            MarkPlace markPlace = MarkPlace.CenterRight;
-            MarkType[] expectedMarks = new MarkType[]
+            var field = new Field();
+            var player = new HumanPlayer(MarkType.X);
+            var markPlace = MarkPlace.CenterRight;
+            var expectedMarks = new[]
             {
                 MarkType.Empty, MarkType.Empty, MarkType.Empty,
                 MarkType.Empty, MarkType.Empty, MarkType.X,

@@ -19,12 +19,12 @@ namespace TicTacToe.Player
             Mark = mark;
         }
 
-        public virtual void MakeAMove(Field field, MarkType markType, MarkPlace markPlace)
+        public void MakeAMove(Field field, MarkType markType, MarkPlace markPlace)
         {
             field.SetMark(markType, markPlace);
         }
 
-        public virtual MarkPlace GetComputerChoice(string userInput)
+        public virtual MarkPlace GetMarkPlace(string userInput)
         {
             int markPlaceIndex;
 

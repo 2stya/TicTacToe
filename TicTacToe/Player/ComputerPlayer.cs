@@ -11,9 +11,5 @@ namespace TicTacToe.Player
             return new Random(9).Next();
         }
 
-        public override void MakeAMove(Field field, MarkType markType, MarkPlace markPlace)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

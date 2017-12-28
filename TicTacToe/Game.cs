@@ -11,7 +11,7 @@ namespace TicTacToe
         {
             StartGame(viewer);
 
-            _field = new Field();
+            _field = new Field(3);
             _humanPlayer = new HumanPlayer(MarkType.X);
         }
 

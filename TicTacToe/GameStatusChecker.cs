@@ -1,4 +1,6 @@
-﻿namespace TicTacToe
+﻿using System.Linq;
+
+namespace TicTacToe
 {
     public enum GameStatus
     {
@@ -12,147 +14,95 @@
     {
         public static GameStatus GetGameStatus(Field field)
         {
-            MarkType[] fieldMarks = field.GetMarksOnField();
-
-            GameStatus status = GetHorizontalLinesStatus(fieldMarks);
+            GameStatus status = GetHorizontalLinesStatus(field);
 
             if (status == GameStatus.GameInProgress)
             {
-                status = GetVerticalLinesStatus(fieldMarks);
+                status = GetVerticalLinesStatus(field);
             }
 
             if (status == GameStatus.GameInProgress)
             {
-                status = GetLeftDiagonalLineStatus(fieldMarks);
+                status = GetMainDiagonalLineStatus(field);
             }
 
             if (status == GameStatus.GameInProgress)
             {
-                status = GetRightDiagonalLineStatus(fieldMarks);
+                status = GetRightDiagonalLineStatus(field);
             }
 
             return status;
         }
 
-        private static GameStatus GetHorizontalLinesStatus(MarkType[] fieldMarks)
+        private static GameStatus GetHorizontalLinesStatus(Field field)
         {
             for (var i = 0; i < 3; i++)
             {
-                var counterX = 0;
-                var counterO = 0;
-                for (var j = 0; j < 3; j++)
-                {
-                    switch (fieldMarks[i * 3 + j])
-                    {
-                        case MarkType.X:
-                            counterX++;
-                            break;
-                        case MarkType.O:
-                            counterO++;
-                            break;
-                    }
-                }
+                var horizontalLineMarks = field.GetHorizontalLineMarkTypes(i);
 
-                if (counterX == 3)
-                {
-                    return GameStatus.XWins;
-                }
-                else if (counterO == 3)
+                if (horizontalLineMarks.All(m => m == MarkType.O))
                 {
                     return GameStatus.OWins;
+                }
+
+                if (horizontalLineMarks.All(m => m == MarkType.X))
+                {
+                    return GameStatus.XWins;
                 }
             }
 
             return GameStatus.GameInProgress;
         }
 
-        private static GameStatus GetVerticalLinesStatus(MarkType[] fieldMarks)
+        private static GameStatus GetVerticalLinesStatus(Field field)
         {
             for (var i = 0; i < 3; i++)
             {
-                var counterX = 0;
-                var counterO = 0;
-                for (var j = 0; j < 3; j++)
-                {
-                    switch (fieldMarks[j * 3 + i])
-                    {
-                        case MarkType.X:
-                            counterX++;
-                            break;
-                        case MarkType.O:
-                            counterO++;
-                            break;
-                    }
-                }
+                var verticalLineMarks = field.GetVerticalLineMarkTypes(i);
 
-                if (counterX == 3)
-                {
-                    return GameStatus.XWins;
-                }
-                else if (counterO == 3)
+                if (verticalLineMarks.All(m => m == MarkType.O))
                 {
                     return GameStatus.OWins;
+                }
+
+                if (verticalLineMarks.All(m => m == MarkType.X))
+                {
+                    return GameStatus.XWins;
                 }
             }
 
             return GameStatus.GameInProgress;
         }
 
-        private static GameStatus GetLeftDiagonalLineStatus(MarkType[] fieldMarks)
+        private static GameStatus GetMainDiagonalLineStatus(Field field)
         {
-            var counterX = 0;
-            var counterO = 0;
+            var mainDiagonalMarks = field.GetMainDiagonalLineMarkTypes();
 
-            for (var i = 0; i < 3; i++)
-            {
-                switch (fieldMarks[i * 3 + i])
-                {
-                    case MarkType.X:
-                        counterX++;
-                        break;
-                    case MarkType.O:
-                        counterO++;
-                        break;
-                }
-            }
-
-            if (counterX == 3)
-            {
-                return GameStatus.XWins;
-            }
-            else if (counterO == 3)
+            if (mainDiagonalMarks.All(m => m == MarkType.O))
             {
                 return GameStatus.OWins;
             }
 
-            return GameStatus.GameInProgress;
-        }
-
-        private static GameStatus GetRightDiagonalLineStatus(MarkType[] fieldMarks)
-        {
-            var counterX = 0;
-            var counterO = 0;
-
-            for (var i = 0; i < 3; i++)
-            {
-                switch (fieldMarks[2 - i + 3 * i])
-                {
-                    case MarkType.X:
-                        counterX++;
-                        break;
-                    case MarkType.O:
-                        counterO++;
-                        break;
-                }
-            }
-
-            if (counterX == 3)
+            if (mainDiagonalMarks.All(m => m == MarkType.X))
             {
                 return GameStatus.XWins;
             }
-            else if (counterO == 3)
+
+            return GameStatus.GameInProgress;
+        }
+
+        private static GameStatus GetRightDiagonalLineStatus(Field field)
+        {
+            var secondaryDiagonalLineMarkTypes = field.GetSecondaryDiagonalLineMarkTypes();
+
+            if (secondaryDiagonalLineMarkTypes.All(m => m == MarkType.O))
             {
                 return GameStatus.OWins;
+            }
+
+            if (secondaryDiagonalLineMarkTypes.All(m => m == MarkType.X))
+            {
+                return GameStatus.XWins;
             }
 
             return GameStatus.GameInProgress;

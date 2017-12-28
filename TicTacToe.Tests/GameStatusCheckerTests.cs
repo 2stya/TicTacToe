@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System.Drawing;
+using Xunit;
 
 namespace TicTacToe.Tests
 {
@@ -8,15 +9,16 @@ namespace TicTacToe.Tests
 
         public GameStatusCheckerTests()
         {
-            _field = new Field();
+            _field = new Field(3);
         }
 
         [Fact]
         public void CheckIfGameHasEnded_OnXWinsHorizontallyTop_ReturnsXWins()
         {
-            _field.SetMark(MarkType.X, MarkPlace.TopLeft);
-            _field.SetMark(MarkType.X, MarkPlace.TopCenter);
-            _field.SetMark(MarkType.X, MarkPlace.TopRight);
+            for (int i = 0; i < _field.SideSize; i++)
+            {
+                _field.SetMark(MarkType.X, new Point(0, i));
+            }
 
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
 
@@ -26,9 +28,11 @@ namespace TicTacToe.Tests
         [Fact]
         public void CheckIfGameHasEnded_OnOWinsHorizontallyBottom_ReturnsOWins()
         {
-            _field.SetMark(MarkType.O, MarkPlace.BottomLeft);
-            _field.SetMark(MarkType.O, MarkPlace.BottomCenter);
-            _field.SetMark(MarkType.O, MarkPlace.BottomRight);
+            for (int i = 0; i < _field.SideSize; i++)
+            {
+                _field.SetMark(MarkType.O, new Point(_field.SideSize - 1, i));
+
+            }
 
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
 
@@ -46,9 +50,10 @@ namespace TicTacToe.Tests
         [Fact]
         public void CheckIfGameHasEnded_OnOWinsVerticallyLeft_ReturnsOWins()
         {
-            _field.SetMark(MarkType.O, MarkPlace.TopLeft);
-            _field.SetMark(MarkType.O, MarkPlace.CenterLeft);
-            _field.SetMark(MarkType.O, MarkPlace.BottomLeft);
+            for (int i = 0; i < _field.SideSize; i++)
+            {
+                _field.SetMark(MarkType.O, new Point(0, i));
+            }
 
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
 
@@ -56,11 +61,12 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void CheckIfGameHasEnded_OnXWinsVerticallyCenter_ReturnsXWins()
+        public void CheckIfGameHasEnded_OnXWinsVerticallySecondRow_ReturnsXWins()
         {
-            _field.SetMark(MarkType.X, MarkPlace.TopCenter);
-            _field.SetMark(MarkType.X, MarkPlace.CenterCenter);
-            _field.SetMark(MarkType.X, MarkPlace.BottomCenter);
+            for (int i = 0; i < _field.SideSize; i++)
+            {
+                _field.SetMark(MarkType.X, new Point(1, i));
+            }
 
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
 
@@ -70,9 +76,10 @@ namespace TicTacToe.Tests
         [Fact]
         public void CheckIfGameHasEnded_OnOWinsVerticallyRight_ReturnsOWins()
         {
-            _field.SetMark(MarkType.O, MarkPlace.TopRight);
-            _field.SetMark(MarkType.O, MarkPlace.CenterRight);
-            _field.SetMark(MarkType.O, MarkPlace.BottomRight);
+            for (int i = 0; i < _field.SideSize; i++)
+            {
+                _field.SetMark(MarkType.O, new Point(_field.SideSize - 1, i));
+            }
 
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
 
@@ -82,9 +89,10 @@ namespace TicTacToe.Tests
         [Fact]
         public void CheckIfGameHasEnded_OnOWinsDiagonallyRight_ReturnsOWins()
         {
-            _field.SetMark(MarkType.O, MarkPlace.TopRight);
-            _field.SetMark(MarkType.O, MarkPlace.CenterCenter);
-            _field.SetMark(MarkType.O, MarkPlace.BottomLeft);
+            for (int i = 0; i < _field.SideSize; i++)
+            {
+                _field.SetMark(MarkType.O, new Point(i, i));
+            }
 
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
 
@@ -94,9 +102,10 @@ namespace TicTacToe.Tests
         [Fact]
         public void CheckIfGameHasEnded_OnXWinsDiagonallyLeft_ReturnsXWins()
         {
-            _field.SetMark(MarkType.X, MarkPlace.TopLeft);
-            _field.SetMark(MarkType.X, MarkPlace.CenterCenter);
-            _field.SetMark(MarkType.X, MarkPlace.BottomRight);
+            for (int i = 0; i < _field.SideSize; i++)
+            {
+                _field.SetMark(MarkType.X, new Point(_field.SideSize - 1 - i, i));
+            }
 
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
 

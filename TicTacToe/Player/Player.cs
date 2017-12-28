@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 
 namespace TicTacToe.Player
 {
@@ -21,35 +22,9 @@ namespace TicTacToe.Player
 
         public abstract int GetPlayerChoice();
 
-        public void MakeAMove(Field field, MarkType markType, MarkPlace markPlace)
+        public void MakeAMove(Field field, MarkType markType, Point markPlace)
         {
             field.SetMark(markType, markPlace);
-        }
-
-        public virtual MarkPlace GetMarkPlace(string userInput)
-        {
-            int markPlaceIndex;
-
-            if (string.IsNullOrWhiteSpace(userInput))
-            {
-                throw new ArgumentException("Value cannot be null or whitespace.", nameof(userInput));
-            }
-
-            try
-            {
-                markPlaceIndex = int.Parse(userInput);
-            }
-            catch (FormatException)
-            {
-                throw new ArgumentException("Incorrect input");
-            }
-
-            if (markPlaceIndex < 0 || markPlaceIndex > 8)
-            {
-                throw new ArgumentOutOfRangeException($"Move can be done only inside of field");
-            }
-
-            return (MarkPlace)markPlaceIndex;
         }
     }
 }

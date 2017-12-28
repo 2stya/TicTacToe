@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using TicTacToe.Player;
 using Xunit;
 
@@ -13,21 +14,11 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void DefinePlayersMove_ReceivingSix_ReturnsBottomLeftMarkPlace()
-        {
-            HumanPlayer player = new HumanPlayer(MarkType.O);
-
-            MarkPlace markPlace = player.GetMarkPlace("6");
-
-            Assert.Equal(MarkPlace.BottomLeft, markPlace);
-        }
-
-        [Fact]
         public void MakeAMove_WithFieldAndCenterRightMarkPlacePassed_SetThePlayersMarkToFifthMemberOfFieldNotToOtherPlaces()
         {
-            var field = new Field();
+            var field = new Field(3);
             var player = new HumanPlayer(MarkType.X);
-            var markPlace = MarkPlace.CenterRight;
+            var markPlace = new Point(1, 2);
             var expectedMarks = new[]
             {
                 MarkType.Empty, MarkType.Empty, MarkType.Empty,
@@ -36,7 +27,7 @@ namespace TicTacToe.Tests
             };
 
             player.MakeAMove(field, player.Mark, markPlace);
-            var marks = field.GetMarksOnField();
+            var marks = field.GetAllMarksOnField();
 
             Assert.Equal(expectedMarks, marks);
         }

@@ -14,7 +14,8 @@ namespace TicTacToe.Console.Tests
         [Fact]
         public void PrepareStringToDrawField_OnCreation_ReturnsStringWithTopAndBottomBorders()
         {
-            Field field = new Field();
+            int fieldSideSize = 3;
+            Field field = new Field(fieldSideSize);
             string fieldDrawString = viewer.PrepareStringToDrawField(field);
 
             Assert.StartsWith("┌-┬-┬-┐", fieldDrawString);

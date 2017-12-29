@@ -1,5 +1,5 @@
+using System.Collections.Generic;
 using System.Linq;
-
 using Xunit;
 
 namespace TicTacToe.Tests
@@ -10,19 +10,20 @@ namespace TicTacToe.Tests
 
         public FieldTests()
         {
-            _field = new Field();
+            const int fieldSideSize = 3;
+            _field = new Field(fieldSideSize);
         }
 
         [Fact]
         public void Field_OnCreation_Contains9PlacesForMarks()
         {
-            Assert.Equal(9, _field.GetMarksOnField().Length);
+            Assert.Equal(9, _field.GetAllMarksOnField().Count());
         }
 
         [Fact]
         public void Field_OnCreation_HaventNonEmptyMarks()
         {
-            MarkType[] emptyFieldMarks = _field.GetMarksOnField();
+            IEnumerable<MarkType> emptyFieldMarks = _field.GetAllMarksOnField();
 
             int notEmptyMarksCount = emptyFieldMarks.Count(type => type != MarkType.Empty);
 
@@ -32,20 +33,21 @@ namespace TicTacToe.Tests
         [Fact]
         public void SetMark_OmarkToTopLeftPosition_OmarkAsFirstFieldElement()
         {
-            _field.SetMark(MarkType.O, MarkPlace.TopLeft);
+            _field.SetMark(MarkType.O, new MarkPlace(0, 0));
 
-            var fieldWithOneMark = _field.GetMarksOnField();
-            Assert.Equal(MarkType.O, fieldWithOneMark[0]);
+            var topLeftPositionMark = _field.GetMark(new MarkPlace(0, 0));
+            Assert.Equal(MarkType.O, topLeftPositionMark);
         }
 
         [Fact]
         public void SetMark_OnBusyPlace_NotChangeInitialMark()
         {
-            _field.SetMark(MarkType.X, MarkPlace.BottomRight);
-            _field.SetMark(MarkType.O, MarkPlace.BottomRight);
+            MarkPlace bottomRightPosition = new MarkPlace(_field.SideSize - 1, _field.SideSize - 1);
 
-            var fieldWithMark = _field.GetMarksOnField();
-            Assert.Equal(MarkType.X, fieldWithMark[8]);
+            _field.SetMark(MarkType.X, bottomRightPosition);
+            _field.SetMark(MarkType.O, bottomRightPosition);
+
+            Assert.Equal(MarkType.X, _field.GetMark(bottomRightPosition));
         }
     }
 }

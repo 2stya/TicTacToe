@@ -4,14 +4,12 @@ namespace TicTacToe.Console
 {
     public class ConsoleViewer : IViewer
     {
-        public ConsoleViewer()
-        {
-            
-        }
-
         public string PrepareStringToDrawField(Field field)
         {
-            var marksOnField = field.GetMarksOnField().Select(i => i.ToString().Replace("Empty", " ")).ToArray();
+            string[] marksOnField = field.GetAllMarksOnField()
+                .Select(i => i.ToString().Replace("Empty", " "))
+                .ToArray();
+            
             return "┌-┬-┬-┐\n" +
                     $"|{marksOnField[0]}|{marksOnField[1]}|{marksOnField[2]}|\n" +
                     "├-----┤\n" + 

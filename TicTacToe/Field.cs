@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 
 namespace TicTacToe
 {
@@ -23,7 +22,7 @@ namespace TicTacToe
             Array.Clear(MarksOnField, 0, MarksOnField.Length);
         }
 
-        public MarkType GetMark(Point markPlace)
+        public MarkType GetMark(MarkPlace markPlace)
         {
             return MarksOnField[markPlace.X, markPlace.Y];
         }
@@ -68,7 +67,7 @@ namespace TicTacToe
             }
         }
 
-        public bool SetMark(MarkType mark, Point place)
+        public bool SetMark(MarkType mark, MarkPlace place)
         {
             if (MarksOnField[place.X, place.Y] == MarkType.Empty)
             {

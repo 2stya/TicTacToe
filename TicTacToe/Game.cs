@@ -9,9 +9,10 @@ namespace TicTacToe
 
         public Game(IViewer viewer)
         {
-            StartGame(viewer);
+            int fieldSideSize = 3;
 
-            _field = new Field(3);
+            StartGame(viewer);
+            _field = new Field(fieldSideSize);
             _humanPlayer = new HumanPlayer(MarkType.X);
         }
 

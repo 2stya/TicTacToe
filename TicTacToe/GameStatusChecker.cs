@@ -36,7 +36,7 @@ namespace TicTacToe
 
         private static GameStatus GetHorizontalLinesStatus(Field field)
         {
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < field.SideSize; i++)
             {
                 var horizontalLineMarks = field.GetHorizontalLineMarkTypes(i);
 
@@ -56,7 +56,7 @@ namespace TicTacToe
 
         private static GameStatus GetVerticalLinesStatus(Field field)
         {
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < field.SideSize; i++)
             {
                 var verticalLineMarks = field.GetVerticalLineMarkTypes(i);
 

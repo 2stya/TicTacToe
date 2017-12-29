@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using TicTacToe.Player;
 using Xunit;
 
@@ -16,9 +15,11 @@ namespace TicTacToe.Tests
         [Fact]
         public void MakeAMove_WithFieldAndCenterRightMarkPlacePassed_SetThePlayersMarkToFifthMemberOfFieldNotToOtherPlaces()
         {
-            var field = new Field(3);
+            const int fieldSideSize = 3;
+
+            var field = new Field(fieldSideSize);
             var player = new HumanPlayer(MarkType.X);
-            var markPlace = new Point(1, 2);
+            var markPlace = new MarkPlace(1, 2);
             var expectedMarks = new[]
             {
                 MarkType.Empty, MarkType.Empty, MarkType.Empty,

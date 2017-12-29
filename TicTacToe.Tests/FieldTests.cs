@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-
 using Xunit;
 
 namespace TicTacToe.Tests
@@ -12,7 +10,8 @@ namespace TicTacToe.Tests
 
         public FieldTests()
         {
-            _field = new Field(3);
+            const int fieldSideSize = 3;
+            _field = new Field(fieldSideSize);
         }
 
         [Fact]
@@ -34,16 +33,16 @@ namespace TicTacToe.Tests
         [Fact]
         public void SetMark_OmarkToTopLeftPosition_OmarkAsFirstFieldElement()
         {
-            _field.SetMark(MarkType.O, new Point(0, 0));
+            _field.SetMark(MarkType.O, new MarkPlace(0, 0));
 
-            var topLeftPositionMark = _field.GetMark(new Point(0, 0));
+            var topLeftPositionMark = _field.GetMark(new MarkPlace(0, 0));
             Assert.Equal(MarkType.O, topLeftPositionMark);
         }
 
         [Fact]
         public void SetMark_OnBusyPlace_NotChangeInitialMark()
         {
-            Point bottomRightPosition = new Point(_field.SideSize - 1, _field.SideSize - 1);
+            MarkPlace bottomRightPosition = new MarkPlace(_field.SideSize - 1, _field.SideSize - 1);
 
             _field.SetMark(MarkType.X, bottomRightPosition);
             _field.SetMark(MarkType.O, bottomRightPosition);

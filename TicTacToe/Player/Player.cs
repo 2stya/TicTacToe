@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Drawing;
 
 namespace TicTacToe.Player
 {
@@ -22,7 +21,7 @@ namespace TicTacToe.Player
 
         public abstract int GetPlayerChoice();
 
-        public void MakeAMove(Field field, MarkType markType, Point markPlace)
+        public void MakeAMove(Field field, MarkType markType, MarkPlace markPlace)
         {
             field.SetMark(markType, markPlace);
         }

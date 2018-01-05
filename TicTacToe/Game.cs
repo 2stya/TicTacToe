@@ -7,7 +7,7 @@ namespace TicTacToe
         private readonly Field _field;
         private Player.Player _humanPlayer;
 
-        public Game(IViewer viewer)
+        public Game(IRenderer viewer)
         {
             int fieldSideSize = 3;
 
@@ -16,7 +16,7 @@ namespace TicTacToe
             _humanPlayer = new HumanPlayer(MarkType.X);
         }
 
-        public void StartGame(IViewer viewer)
+        public void StartGame(IRenderer viewer)
         {
             viewer.ShowLogo();
 

@@ -2,7 +2,7 @@
 
 namespace TicTacToe.Console
 {
-    public class ConsoleViewer : IViewer
+    public class ConsoleRenderer : IRenderer
     {
         public string PrepareStringToDrawField(Field field)
         {

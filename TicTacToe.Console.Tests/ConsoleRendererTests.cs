@@ -2,21 +2,21 @@
 
 namespace TicTacToe.Console.Tests
 {
-    public class ConsoleViewerTests
+    public class ConsoleRendererTests
     {
-        private readonly ConsoleViewer viewer;
+        private readonly ConsoleRenderer _renderer;
 
-        public ConsoleViewerTests()
+        public ConsoleRendererTests()
         {
-            viewer = new ConsoleViewer();
+            _renderer = new ConsoleRenderer();
         }
 
         [Fact]
         public void PrepareStringToDrawField_OnCreation_ReturnsStringWithTopAndBottomBorders()
         {
-            int fieldSideSize = 3;
+            const int fieldSideSize = 3;
             Field field = new Field(fieldSideSize);
-            string fieldDrawString = viewer.PrepareStringToDrawField(field);
+            string fieldDrawString = _renderer.PrepareStringToDrawField(field);
 
             Assert.StartsWith("┌-┬-┬-┐", fieldDrawString);
             Assert.EndsWith("└-┴-┴-┘", fieldDrawString);
@@ -25,8 +25,8 @@ namespace TicTacToe.Console.Tests
         [Fact]
         public void PrepareStringToDrawLogo_OnCreation_ReturnsLogo()
         {
-            string actualLogo = viewer.PrepareStringToDrawLogo();
-            string expectedLogo = @"  .-----------------------------------------------------------------.
+            string actualLogo = _renderer.PrepareStringToDrawLogo();
+            const string expectedLogo = @"  .-----------------------------------------------------------------.
  /  .-.                                                         .-.  \
 |  /   \                                                       /   \  |
 | |\_.  |                    TIC TAC TOE                      |    /| |
@@ -44,8 +44,8 @@ namespace TicTacToe.Console.Tests
         [Fact]
         public void PrepareStringToDrawUserInstructions_OnCreation_ReturnsUserInstructions()
         {
-            string actualInstructions = viewer.PrepareStringToDrawUserInstructions();
-            string expectedInstructions = @" 1|2|3
+            string actualInstructions = _renderer.PrepareStringToDrawUserInstructions();
+            const string expectedInstructions = @" 1|2|3
  -----
  4|5|6
  -----

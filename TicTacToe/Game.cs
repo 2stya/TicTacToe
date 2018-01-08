@@ -11,9 +11,9 @@ namespace TicTacToe
         public Game(IViewer viewer)
         {
             _viewer = viewer;
-            int fieldSideSize = 3;
+            const int size = 3;
             
-            Field = new Field(fieldSideSize);
+            Field = new Field(size);
             Players = new Players();
         }
 

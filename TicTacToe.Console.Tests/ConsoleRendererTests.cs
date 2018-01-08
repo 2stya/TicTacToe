@@ -16,7 +16,7 @@ namespace TicTacToe.Console.Tests
         {
             const int fieldSideSize = 3;
             Field field = new Field(fieldSideSize);
-            string fieldDrawString = _renderer.PrepareStringToDrawField(field);
+            string fieldDrawString = Render.GetFieldRender(field);
 
             Assert.StartsWith("┌-┬-┬-┐", fieldDrawString);
             Assert.EndsWith("└-┴-┴-┘", fieldDrawString);
@@ -25,7 +25,7 @@ namespace TicTacToe.Console.Tests
         [Fact]
         public void PrepareStringToDrawLogo_OnCreation_ReturnsLogo()
         {
-            string actualLogo = _renderer.PrepareStringToDrawLogo();
+            string actualLogo = Render.GetLogoRender();
             const string expectedLogo = @"  .-----------------------------------------------------------------.
  /  .-.                                                         .-.  \
 |  /   \                                                       /   \  |
@@ -44,7 +44,7 @@ namespace TicTacToe.Console.Tests
         [Fact]
         public void PrepareStringToDrawUserInstructions_OnCreation_ReturnsUserInstructions()
         {
-            string actualInstructions = _renderer.PrepareStringToDrawUserInstructions();
+            string actualInstructions = Render.GetUserInstructionsRender();
             const string expectedInstructions = @" 1|2|3
  -----
  4|5|6

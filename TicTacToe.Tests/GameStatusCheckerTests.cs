@@ -12,14 +12,6 @@ namespace TicTacToe.Tests
             _field = new Field(FieldSize);
         }
 
-        private void SetTopRowWithX()
-        {
-            for (int i = 0; i < FieldSize; i++)
-            {
-                _field.SetMark(MarkType.X, new MarkPlace(0, i));
-            }
-        }
-
         [Fact]
         public void GetGameStatus_OnXWinsHorizontallyTop_ReturnsXWins()
         {
@@ -138,6 +130,14 @@ namespace TicTacToe.Tests
 
             // Assert
             Assert.Equal(GameStatus.XWins, gameStatus);
+        }
+
+        private void SetTopRowWithX()
+        {
+            for (int i = 0; i < FieldSize; i++)
+            {
+                _field.SetMark(MarkType.X, new MarkPlace(0, i));
+            }
         }
     }
 }

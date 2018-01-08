@@ -2,7 +2,7 @@
 {
     public interface IRenderer
     {
-        void Draw(Field field);
+        void DrawField(Field field);
         void DrawLogo();
         void DrawUserInstructions();
     }

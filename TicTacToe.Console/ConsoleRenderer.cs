@@ -2,7 +2,7 @@
 {
     public class ConsoleRenderer : IRenderer
     {
-        public void Draw(Field field)
+        public void DrawField(Field field)
         {
             string stringToDrawField = Render.GetFieldRender(field);
             System.Console.Clear();

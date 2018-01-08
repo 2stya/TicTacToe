@@ -1,9 +1,16 @@
-﻿using Xunit;
+﻿using TicTacToe.Console;
+using Xunit;
 
 namespace TicTacToe.Tests
 {
     public class GameTests
     {
+        private IViewer _renderer;
+
+        public GameTests()
+        {
+            _renderer = new ConsoleViewer();
+        }
         [Fact]
         public void Game_OnCreation_ContainsFieldWithSideSizeEqual3()
         {
@@ -18,9 +25,8 @@ namespace TicTacToe.Tests
         [Fact]
         public void Game_OnCreation_ContainsTwoPlayers()
         {
-            IViewer viewer = null;
             
-            Game game = new Game(viewer);
+            Game game = new Game(_renderer);
 
             Assert.Equal(2, game.Players.Length);
         }

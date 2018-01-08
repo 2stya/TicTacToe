@@ -20,7 +20,7 @@ namespace TicTacToe
         {
             viewer.ShowLogo();
 
-            viewer.DrawField(_field);
+            viewer.Draw(_field);
             viewer.DrawUserInstructions();
         }
     }

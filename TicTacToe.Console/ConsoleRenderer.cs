@@ -19,7 +19,7 @@ namespace TicTacToe.Console
                     "└-┴-┴-┘";
         }
 
-        public void DrawField(Field field)
+        public void Draw(Field field)
         {
             string stringToDrawField = PrepareStringToDrawField(field);
             System.Console.Clear();

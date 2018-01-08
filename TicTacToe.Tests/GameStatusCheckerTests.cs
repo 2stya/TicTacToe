@@ -12,14 +12,19 @@ namespace TicTacToe.Tests
             _field = new Field(FieldSize);
         }
 
-        [Fact]
-        public void GetGameStatus_OnXWinsHorizontallyTop_ReturnsXWins()
+        private void SetTopRowWithX()
         {
-            // Arrange
             for (int i = 0; i < FieldSize; i++)
             {
                 _field.SetMark(MarkType.X, new MarkPlace(0, i));
             }
+        }
+
+        [Fact]
+        public void GetGameStatus_OnXWinsHorizontallyTop_ReturnsXWins()
+        {
+            // Arrange
+            SetTopRowWithX();
 
             // Act
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);

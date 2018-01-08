@@ -6,7 +6,7 @@ namespace TicTacToe
     {
         private IViewer _viewer;
         public Field Field { get; }
-        public Player.Player[] Players { get; }
+        public Players Players { get; }
 
         public Game(IViewer viewer)
         {
@@ -14,7 +14,7 @@ namespace TicTacToe
             int fieldSideSize = 3;
             
             Field = new Field(fieldSideSize);
-            Players = new Player.Player[] {new HumanPlayer(MarkType.X), new HumanPlayer(MarkType.O) };
+            Players = new Players();
         }
 
         public void StartGame(IViewer viewer)

@@ -7,7 +7,7 @@ namespace TicTacToe.Player
     {
         public MarkType Mark { get; }
 
-        public Player(MarkType mark)
+        protected Player(MarkType mark)
         {
             if (mark == MarkType.Empty)
             {

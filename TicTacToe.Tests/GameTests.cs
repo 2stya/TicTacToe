@@ -28,7 +28,7 @@ namespace TicTacToe.Tests
             
             Game game = new Game(_renderer);
 
-            Assert.Equal(2, game.Players.Length);
+            Assert.Equal(2, game.Players.Count);
         }
     }
 }

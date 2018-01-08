@@ -26,7 +26,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void GetGameStatus_OnOWinsHorizontallyBottom_ReturnsOWins()
+        public void GetGameStatus_OnBottomRowFilledWith_ReturnsOWins()
         {
             // Arrange
             for (int i = 0; i < FieldSize; i++)
@@ -53,7 +53,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void GetGameStatus_OnOWinsVerticallyLeft_ReturnsOWins()
+        public void GetGameStatus_OnLeftColumnFilledWithO_ReturnsOWins()
         {
             // Arrange
             for (int i = 0; i < FieldSize; i++)
@@ -69,7 +69,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void GetGameStatus_OnXWinsVerticallySecondRow_ReturnsXWins()
+        public void GetGameStatus_OnRightColumnFilledWithX_ReturnsXWins()
         {
             // Arrange
             for (int i = 0; i < FieldSize; i++)
@@ -85,7 +85,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void GetGameStatus_OnOWinsVerticallyRight_ReturnsOWins()
+        public void GetGameStatus_OnRightColumnFilledWithO_ReturnsOWins()
         {
             // Arrange
             for (int i = 0; i < FieldSize; i++)
@@ -101,7 +101,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void GetGameStatus_OnOWinsDiagonallyRight_ReturnsOWins()
+        public void GetGameStatus_OnMainDiagonalFilledWithO_ReturnsOWins()
         {
             // Arrange
             for (int i = 0; i < FieldSize; i++)
@@ -117,7 +117,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void GetGameStatus_OnXWinsDiagonallyLeft_ReturnsXWins()
+        public void GetGameStatus_OnSecondaryDiagonalFilledWith_ReturnsXWins()
         {
             // Arrange
             for (int i = 0; i < FieldSize; i++)

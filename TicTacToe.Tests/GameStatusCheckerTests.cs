@@ -13,7 +13,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void GetGameStatus_OnXWinsHorizontallyTop_ReturnsXWins()
+        public void GetGameStatus_OnTopRowFilledWithX_ReturnsXWins()
         {
             // Arrange
             SetTopRowWithX();

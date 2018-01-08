@@ -11,9 +11,10 @@ namespace TicTacToe
         {
             int fieldSideSize = 3;
 
-            StartGame(viewer);
             _field = new Field(fieldSideSize);
             _humanPlayer = new HumanPlayer(MarkType.X);
+
+            StartGame(viewer);
         }
 
         public void StartGame(IRenderer viewer)

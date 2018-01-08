@@ -1,25 +1,56 @@
-﻿using System.Linq;
-
-namespace TicTacToe.Console
+﻿namespace TicTacToe.Console
 {
     public static class Render
     {
         public static string GetFieldRender(Field field)
         {
-            string[] marksOnField = field.GetAllMarksOnField()
-                .Select(i => i.ToString().Replace("Empty", " "))
-                .ToArray();
+            return RenderFieldTop(field.SideSize) +
+                   RenderFieldPlayArea(field) +
+                   RenderFieldBottom(field.SideSize);
+        }
 
-            var fieldTop = RenderFieldTop(field.SideSize);
+        private static string RenderFieldBottom(int size)
+        {
+            string fieldBottom = "└";
+            for (int i = 0; i < size; i++)
+            {
+                fieldBottom += "-";
 
-            
-            return fieldTop +
-                   $"|{marksOnField[0]}|{marksOnField[1]}|{marksOnField[2]}|\n" +
-                   "├-----┤\n" + 
-                   $"|{marksOnField[3]}|{marksOnField[4]}|{marksOnField[5]}|\r\n" +
-                   "├-----┤\n" +
-                   $"|{marksOnField[6]}|{marksOnField[7]}|{marksOnField[8]}|\r\n" +
-                   "└-┴-┴-┘";
+                if (i < size - 1)
+                {
+                    fieldBottom += "┴";
+                }
+            }
+
+            return fieldBottom + "┘";
+        }
+
+        private static string RenderFieldPlayArea(Field field)
+        {
+            string fieldPlayArea = "";
+
+            int size = field.SideSize;
+
+            for (int i = 0; i < size; i++)
+            {
+                fieldPlayArea += "|";
+                for (int j = 0; j < size; j++)
+                {
+                    fieldPlayArea += field.GetMark(new MarkPlace(i, j)) == MarkType.Empty ? " ": field.GetMark(new MarkPlace(i, j)).ToString();
+                    fieldPlayArea += "|";
+                }
+
+                fieldPlayArea += "\n";
+
+                if (i < size - 1)
+                {
+                    fieldPlayArea += "├-----┤\n";
+                }
+
+                
+            }
+
+            return fieldPlayArea;
         }
 
         private static string RenderFieldTop(int size)
@@ -29,7 +60,7 @@ namespace TicTacToe.Console
             {
                 fieldTop += "-";
 
-                if (i < size - 2)
+                if (i < size - 1)
                 {
                     fieldTop += "┬";
                 }

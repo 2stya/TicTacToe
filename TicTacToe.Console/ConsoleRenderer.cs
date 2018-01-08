@@ -41,7 +41,7 @@ namespace TicTacToe.Console
   `---'                                                         `---'";
         }
 
-        public void ShowLogo()
+        public void DrawLogo()
         {
             System.Console.Clear();
             System.Console.WriteLine(PrepareStringToDrawLogo());

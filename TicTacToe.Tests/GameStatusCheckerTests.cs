@@ -26,7 +26,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void GetGameStatus_OnBottomRowFilledWith_ReturnsOWins()
+        public void GetGameStatus_OnBottomRowFilledWithO_ReturnsOWins()
         {
             // Arrange
             for (int i = 0; i < FieldSize; i++)
@@ -117,7 +117,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void GetGameStatus_OnSecondaryDiagonalFilledWith_ReturnsXWins()
+        public void GetGameStatus_OnSecondaryDiagonalFilledWithX_ReturnsXWins()
         {
             // Arrange
             for (int i = 0; i < FieldSize; i++)

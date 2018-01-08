@@ -13,7 +13,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void CheckIfGameHasEnded_OnXWinsHorizontallyTop_ReturnsXWins()
+        public void GetGameStatus_OnXWinsHorizontallyTop_ReturnsXWins()
         {
             for (int i = 0; i < FieldSize; i++)
             {
@@ -26,7 +26,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void CheckIfGameHasEnded_OnOWinsHorizontallyBottom_ReturnsOWins()
+        public void GetGameStatus_OnOWinsHorizontallyBottom_ReturnsOWins()
         {
             for (int i = 0; i < FieldSize; i++)
             {
@@ -40,7 +40,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void CheckIfGameHasEnded_OnEmptyField_ReturnsGameInProgress()
+        public void GetGameStatus_OnEmptyField_ReturnsGameInProgress()
         {
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
 
@@ -48,7 +48,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void CheckIfGameHasEnded_OnOWinsVerticallyLeft_ReturnsOWins()
+        public void GetGameStatus_OnOWinsVerticallyLeft_ReturnsOWins()
         {
             for (int i = 0; i < FieldSize; i++)
             {
@@ -61,7 +61,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void CheckIfGameHasEnded_OnXWinsVerticallySecondRow_ReturnsXWins()
+        public void GetGameStatus_OnXWinsVerticallySecondRow_ReturnsXWins()
         {
             for (int i = 0; i < FieldSize; i++)
             {
@@ -74,7 +74,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void CheckIfGameHasEnded_OnOWinsVerticallyRight_ReturnsOWins()
+        public void GetGameStatus_OnOWinsVerticallyRight_ReturnsOWins()
         {
             for (int i = 0; i < FieldSize; i++)
             {
@@ -87,7 +87,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void CheckIfGameHasEnded_OnOWinsDiagonallyRight_ReturnsOWins()
+        public void GetGameStatus_OnOWinsDiagonallyRight_ReturnsOWins()
         {
             for (int i = 0; i < FieldSize; i++)
             {
@@ -100,7 +100,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void CheckIfGameHasEnded_OnXWinsDiagonallyLeft_ReturnsXWins()
+        public void GetGameStatus_OnXWinsDiagonallyLeft_ReturnsXWins()
         {
             for (int i = 0; i < FieldSize; i++)
             {

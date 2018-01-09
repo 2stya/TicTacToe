@@ -91,10 +91,7 @@ namespace TicTacToe.Tests
         public void GetGameStatus_OnMainDiagonalFilledWithO_ReturnsOWins()
         {
             // Arrange
-            for (int i = 0; i < FieldSize; i++)
-            {
-                _field.SetMark(MarkType.O, new MarkPlace(i, i));
-            }
+            SetMainDiagonalWithMark(MarkType.O);
 
             // Act
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
@@ -132,6 +129,14 @@ namespace TicTacToe.Tests
             for (int i = 0; i < FieldSize; i++)
             {
                 _field.SetMark(markType, new MarkPlace(i, column));
+            }
+        }
+
+        private void SetMainDiagonalWithMark(MarkType markType)
+        {
+            for (int i = 0; i < FieldSize; i++)
+            {
+                _field.SetMark(markType, new MarkPlace(i, i));
             }
         }
     }

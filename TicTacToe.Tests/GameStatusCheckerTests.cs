@@ -104,10 +104,7 @@ namespace TicTacToe.Tests
         public void GetGameStatus_OnSecondaryDiagonalFilledWithX_ReturnsXWins()
         {
             // Arrange
-            for (int i = 0; i < FieldSize; i++)
-            {
-                _field.SetMark(MarkType.X, new MarkPlace(FieldSize - 1 - i, i));
-            }
+            SetSecondaryDiagonalWithMark(MarkType.X);
 
             // Act
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
@@ -137,6 +134,14 @@ namespace TicTacToe.Tests
             for (int i = 0; i < FieldSize; i++)
             {
                 _field.SetMark(markType, new MarkPlace(i, i));
+            }
+        }
+
+        private void SetSecondaryDiagonalWithMark(MarkType markType)
+        {
+            for (int i = 0; i < FieldSize; i++)
+            {
+                _field.SetMark(markType, new MarkPlace(FieldSize - 1 - i, i));
             }
         }
     }

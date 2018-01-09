@@ -16,7 +16,7 @@ namespace TicTacToe.Tests
         public void GetGameStatus_OnTopRowFilledWithX_ReturnsXWins()
         {
             // Arrange
-            SetTopRowWithX();
+            SetRowWithMark(0, MarkType.X);
 
             // Act
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
@@ -29,11 +29,7 @@ namespace TicTacToe.Tests
         public void GetGameStatus_OnBottomRowFilledWithO_ReturnsOWins()
         {
             // Arrange
-            for (int i = 0; i < FieldSize; i++)
-            {
-                _field.SetMark(MarkType.O, new MarkPlace(FieldSize - 1, i));
-
-            }
+            SetRowWithMark(FieldSize - 1, MarkType.O);
 
             // Act
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
@@ -132,11 +128,11 @@ namespace TicTacToe.Tests
             Assert.Equal(GameStatus.XWins, gameStatus);
         }
 
-        private void SetTopRowWithX()
+        private void SetRowWithMark(int row, MarkType markType)
         {
             for (int i = 0; i < FieldSize; i++)
             {
-                _field.SetMark(MarkType.X, new MarkPlace(0, i));
+                _field.SetMark(markType, new MarkPlace(row, i));
             }
         }
     }

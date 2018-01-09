@@ -52,10 +52,7 @@ namespace TicTacToe.Tests
         public void GetGameStatus_OnLeftColumnFilledWithO_ReturnsOWins()
         {
             // Arrange
-            for (int i = 0; i < FieldSize; i++)
-            {
-                _field.SetMark(MarkType.O, new MarkPlace(0, i));
-            }
+            SetColumnWithMark(0, MarkType.O);
 
             // Act
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
@@ -68,10 +65,7 @@ namespace TicTacToe.Tests
         public void GetGameStatus_OnRightColumnFilledWithX_ReturnsXWins()
         {
             // Arrange
-            for (int i = 0; i < FieldSize; i++)
-            {
-                _field.SetMark(MarkType.X, new MarkPlace(1, i));
-            }
+            SetColumnWithMark(FieldSize - 1, MarkType.X);
 
             // Act
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
@@ -81,13 +75,10 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public void GetGameStatus_OnRightColumnFilledWithO_ReturnsOWins()
+        public void GetGameStatus_OnSecondColumnFilledWithO_ReturnsOWins()
         {
             // Arrange
-            for (int i = 0; i < FieldSize; i++)
-            {
-                _field.SetMark(MarkType.O, new MarkPlace(FieldSize - 1, i));
-            }
+            SetColumnWithMark(1, MarkType.O);
 
             // Act
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
@@ -133,6 +124,14 @@ namespace TicTacToe.Tests
             for (int i = 0; i < FieldSize; i++)
             {
                 _field.SetMark(markType, new MarkPlace(row, i));
+            }
+        }
+
+        private void SetColumnWithMark(int column, MarkType markType)
+        {
+            for (int i = 0; i < FieldSize; i++)
+            {
+                _field.SetMark(markType, new MarkPlace(i, column));
             }
         }
     }

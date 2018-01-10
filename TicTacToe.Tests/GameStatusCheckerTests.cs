@@ -16,7 +16,7 @@ namespace TicTacToe.Tests
         public void GetGameStatus_OnTopRowFilledWithX_ReturnsXWins()
         {
             // Arrange
-            SetRowWithMark(0, MarkType.X);
+            SetRowWith(0, MarkType.X);
 
             // Act
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
@@ -29,7 +29,7 @@ namespace TicTacToe.Tests
         public void GetGameStatus_OnBottomRowFilledWithO_ReturnsOWins()
         {
             // Arrange
-            SetRowWithMark(FieldSize - 1, MarkType.O);
+            SetRowWith(FieldSize - 1, MarkType.O);
 
             // Act
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
@@ -52,7 +52,7 @@ namespace TicTacToe.Tests
         public void GetGameStatus_OnLeftColumnFilledWithO_ReturnsOWins()
         {
             // Arrange
-            SetColumnWithMark(0, MarkType.O);
+            SetColumnWith(0, MarkType.O);
 
             // Act
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
@@ -65,7 +65,7 @@ namespace TicTacToe.Tests
         public void GetGameStatus_OnRightColumnFilledWithX_ReturnsXWins()
         {
             // Arrange
-            SetColumnWithMark(FieldSize - 1, MarkType.X);
+            SetColumnWith(FieldSize - 1, MarkType.X);
 
             // Act
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
@@ -78,7 +78,7 @@ namespace TicTacToe.Tests
         public void GetGameStatus_OnSecondColumnFilledWithO_ReturnsOWins()
         {
             // Arrange
-            SetColumnWithMark(1, MarkType.O);
+            SetColumnWith(1, MarkType.O);
 
             // Act
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
@@ -91,7 +91,7 @@ namespace TicTacToe.Tests
         public void GetGameStatus_OnMainDiagonalFilledWithO_ReturnsOWins()
         {
             // Arrange
-            SetMainDiagonalWithMark(MarkType.O);
+            SetMainDiagonalWith(MarkType.O);
 
             // Act
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
@@ -104,7 +104,7 @@ namespace TicTacToe.Tests
         public void GetGameStatus_OnSecondaryDiagonalFilledWithX_ReturnsXWins()
         {
             // Arrange
-            SetSecondaryDiagonalWithMark(MarkType.X);
+            SetSecondaryDiagonalWith(MarkType.X);
 
             // Act
             GameStatus gameStatus = GameStatusChecker.GetGameStatus(_field);
@@ -113,7 +113,7 @@ namespace TicTacToe.Tests
             Assert.Equal(GameStatus.XWins, gameStatus);
         }
 
-        private void SetRowWithMark(int row, MarkType markType)
+        private void SetRowWith(int row, MarkType markType)
         {
             for (int i = 0; i < FieldSize; i++)
             {
@@ -121,7 +121,7 @@ namespace TicTacToe.Tests
             }
         }
 
-        private void SetColumnWithMark(int column, MarkType markType)
+        private void SetColumnWith(int column, MarkType markType)
         {
             for (int i = 0; i < FieldSize; i++)
             {
@@ -129,7 +129,7 @@ namespace TicTacToe.Tests
             }
         }
 
-        private void SetMainDiagonalWithMark(MarkType markType)
+        private void SetMainDiagonalWith(MarkType markType)
         {
             for (int i = 0; i < FieldSize; i++)
             {
@@ -137,7 +137,7 @@ namespace TicTacToe.Tests
             }
         }
 
-        private void SetSecondaryDiagonalWithMark(MarkType markType)
+        private void SetSecondaryDiagonalWith(MarkType markType)
         {
             for (int i = 0; i < FieldSize; i++)
             {

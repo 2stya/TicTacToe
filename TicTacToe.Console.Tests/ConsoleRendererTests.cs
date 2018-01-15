@@ -12,7 +12,7 @@ namespace TicTacToe.Console.Tests
         }
 
         [Fact]
-        public void PrepareStringToDrawField_OnCreation_ReturnsStringWithTopAndBottomBorders()
+        public void GetFieldRender_OnCreation_ReturnsStringWithTopAndBottomBorders()
         {
             const int fieldSideSize = 3;
             Field field = new Field(fieldSideSize);
@@ -23,7 +23,7 @@ namespace TicTacToe.Console.Tests
         }
 
         [Fact]
-        public void PrepareStringToDrawLogo_OnCreation_ReturnsLogo()
+        public void GetLogoRender_OnCreation_ReturnsLogo()
         {
             string actualLogo = Render.GetLogoRender();
             const string expectedLogo = @"  .-----------------------------------------------------------------.
@@ -42,7 +42,7 @@ namespace TicTacToe.Console.Tests
         }
 
         [Fact]
-        public void PrepareStringToDrawUserInstructions_OnCreation_ReturnsUserInstructions()
+        public void GetUserInstructionsRender_OnCreation_ReturnsUserInstructions()
         {
             string actualInstructions = Render.GetUserInstructionsRender();
             const string expectedInstructions = @" 1|2|3

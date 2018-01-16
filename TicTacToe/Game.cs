@@ -4,6 +4,7 @@ namespace TicTacToe
 {
     public class Game
     {
+        const int size = 3;
         private IViewer _viewer;
         public Field Field { get; }
         public Players Players { get; }
@@ -11,8 +12,7 @@ namespace TicTacToe
         public Game(IViewer viewer)
         {
             _viewer = viewer;
-            const int size = 3;
-            
+
             Field = new Field(size);
             Players = new Players();
         }

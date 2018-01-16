@@ -19,9 +19,9 @@ namespace TicTacToe.Tests
             
             // Act
             Game game = new Game(viewer);
-            Field field = game.Field;
 
             // Assert
+            Field field = game.Field;
             Assert.Equal(3, field.SideSize);
         }
 

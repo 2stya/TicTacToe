@@ -14,20 +14,24 @@ namespace TicTacToe.Tests
         [Fact]
         public void Game_OnCreation_ContainsFieldWithSideSizeEqual3()
         {
+            // Arrange
             IViewer viewer = null;
             
+            // Act
             Game game = new Game(viewer);
             Field field = game.Field;
 
+            // Assert
             Assert.Equal(3, field.SideSize);
         }
 
         [Fact]
         public void Game_OnCreation_ContainsTwoPlayers()
         {
-            
+            // Act
             Game game = new Game(_renderer);
 
+            // Assert
             Assert.Equal(2, game.Players.Count);
         }
     }

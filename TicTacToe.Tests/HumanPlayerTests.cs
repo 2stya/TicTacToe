@@ -15,9 +15,9 @@ namespace TicTacToe.Tests
         [Fact]
         public void MakeAMove_WithFieldAndCenterRightMarkPlacePassed_SetThePlayersMarkToFifthMemberOfFieldNotToOtherPlaces()
         {
-            const int fieldSideSize = 3;
+            const int size = 3;
 
-            var field = new Field(fieldSideSize);
+            var field = new Field(size);
             var player = new HumanPlayer(MarkType.X);
             var markPlace = new MarkPlace(1, 2);
             var expectedMarks = new[]

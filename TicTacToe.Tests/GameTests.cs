@@ -5,12 +5,23 @@ namespace TicTacToe.Tests
 {
     public class GameTests
     {
+        internal class GameTestable : Game
+        {
+            public GameTestable(IViewer viewer) : base(viewer) { }
+
+            public Field GetField()
+            {
+                return _field;
+            }
+        }
+
         private IViewer _renderer;
 
         public GameTests()
         {
             _renderer = new ConsoleViewer();
         }
+
         [Fact]
         public void Game_OnCreation_ContainsFieldWithSideSizeEqual3()
         {
@@ -18,10 +29,10 @@ namespace TicTacToe.Tests
             IViewer viewer = null;
             
             // Act
-            Game game = new Game(viewer);
+            GameTestable game = new GameTestable(viewer);
 
             // Assert
-            Field field = game.Field;
+            Field field = game.GetField();
             Assert.Equal(3, field.SideSize);
         }
 

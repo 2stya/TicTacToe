@@ -4,7 +4,7 @@ namespace TicTacToe
 {
     public class Game
     {
-        private readonly Field _field;
+        protected readonly Field _field;
         private readonly IViewer _viewer;
         public Players Players { get; }
         const int size = 3;

@@ -6,14 +6,15 @@ namespace TicTacToe
     {
         private readonly Field _field;
         private readonly IViewer _viewer;
-        private Player.Player _humanPlayer;
+        public Players Players { get; }
+        const int size = 3;
 
         public Game(IViewer viewer)
         {
-            int fieldSideSize = 3;
+            _viewer = viewer;
 
-            _field = new Field(fieldSideSize);
-            _humanPlayer = new HumanPlayer(MarkType.X);
+            _field = new Field(size);
+            Players = new Players();
             this._viewer = viewer;
         }
 

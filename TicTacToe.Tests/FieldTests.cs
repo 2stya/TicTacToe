@@ -10,8 +10,8 @@ namespace TicTacToe.Tests
 
         public FieldTests()
         {
-            const int fieldSideSize = 3;
-            _field = new Field(fieldSideSize);
+            const int size = 3;
+            _field = new Field(size);
         }
 
         [Fact]

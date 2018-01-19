@@ -40,6 +40,14 @@ namespace TicTacToe.Tests
             {
                 this.FieldSize = field.SideSize;
             }
+
+            public override void ShowLogo()
+            {
+            }
+
+            public override void DrawUserInstructions()
+            {
+            }
         }
     }
 }

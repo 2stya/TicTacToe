@@ -2,21 +2,21 @@
 {
     public class ConsoleRenderer : IRenderer
     {
-        public void DrawField(Field field)
+        public virtual void DrawField(Field field)
         {
             string stringToDrawField = Render.GetFieldRender(field);
             System.Console.Clear();
             System.Console.WriteLine(stringToDrawField);
         }
 
-        public void DrawLogo()
+        public virtual void DrawLogo()
         {
             System.Console.Clear();
             System.Console.WriteLine(Render.GetLogoRender());
             System.Console.Read();
         }
 
-        public void DrawUserInstructions()
+        public virtual void DrawUserInstructions()
         {
             System.Console.WriteLine(Render.GetUserInstructionsRender());
         }

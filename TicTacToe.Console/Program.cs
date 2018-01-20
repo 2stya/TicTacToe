@@ -6,6 +6,8 @@
         {
             IRenderer viewer = new ConsoleRenderer();
             Game game = new Game(viewer);
+
+            game.StartGame();
         }
     }
 }

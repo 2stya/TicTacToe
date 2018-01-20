@@ -5,34 +5,49 @@ namespace TicTacToe.Tests
 {
     public class GameTests
     {
-        private IViewer _renderer;
+        private readonly ConsoleViewerSpy _renderer;
+        private readonly Game _game;
 
         public GameTests()
         {
-            _renderer = new ConsoleViewer();
+            _renderer = new ConsoleViewerSpy();
+            _game = new Game(_renderer);
         }
+
         [Fact]
         public void Game_OnCreation_ContainsFieldWithSideSizeEqual3()
         {
-            // Arrange
-            IViewer viewer = null;
-            
             // Act
-            Game game = new Game(viewer);
+            _game.StartGame();
+            int fieldSize = _renderer.FieldSize;
 
             // Assert
-            Field field = game.Field;
-            Assert.Equal(3, field.SideSize);
+            Assert.Equal(3, fieldSize);
         }
 
         [Fact]
         public void Game_OnCreation_ContainsTwoPlayers()
         {
-            // Act
-            Game game = new Game(_renderer);
-
             // Assert
-            Assert.Equal(2, game.Players.Count);
+            Assert.Equal(2, _game.Players.Count);
+        }
+
+        private class ConsoleViewerSpy : ConsoleViewer
+        {
+            public int FieldSize { get; private set; }
+
+            public override void DrawField(Field field)
+            {
+                this.FieldSize = field.SideSize;
+            }
+
+            public override void ShowLogo()
+            {
+            }
+
+            public override void DrawUserInstructions()
+            {
+            }
         }
     }
 }

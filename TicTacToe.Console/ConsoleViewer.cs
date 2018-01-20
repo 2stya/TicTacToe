@@ -19,7 +19,7 @@ namespace TicTacToe.Console
                     "└-┴-┴-┘";
         }
 
-        public void DrawField(Field field)
+        public virtual void DrawField(Field field)
         {
             string stringToDrawField = PrepareStringToDrawField(field);
             System.Console.Clear();
@@ -41,7 +41,7 @@ namespace TicTacToe.Console
   `---'                                                         `---'";
         }
 
-        public void ShowLogo()
+        public virtual void ShowLogo()
         {
             System.Console.Clear();
             System.Console.WriteLine(PrepareStringToDrawLogo());
@@ -53,7 +53,7 @@ namespace TicTacToe.Console
             return " 1|2|3\r\n -----\r\n 4|5|6\r\n -----\r\n 7|8|9";
         }
 
-        public void DrawUserInstructions()
+        public virtual void DrawUserInstructions()
         {
             System.Console.WriteLine(PrepareStringToDrawUserInstructions());
         }

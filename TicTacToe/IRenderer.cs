@@ -1,9 +1,9 @@
 ﻿namespace TicTacToe
 {
-    public interface IViewer
+    public interface IRenderer
     {
         void DrawField(Field field);
-        void ShowLogo();
+        void DrawLogo();
         void DrawUserInstructions();
     }
 }

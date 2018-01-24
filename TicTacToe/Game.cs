@@ -5,25 +5,24 @@ namespace TicTacToe
     public class Game
     {
         protected readonly Field _field;
-        private readonly IViewer _viewer;
+        private readonly IRenderer _renderer;
         public Players Players { get; }
         const int size = 3;
 
-        public Game(IViewer viewer)
+        public Game(IRenderer renderer)
         {
-            _viewer = viewer;
+            _renderer = renderer;
 
             _field = new Field(size);
             Players = new Players();
-            this._viewer = viewer;
+            this._renderer = renderer;
         }
 
         public void StartGame()
         {
-            _viewer.ShowLogo();
-
-            _viewer.DrawField(_field);
-            _viewer.DrawUserInstructions();
+            _renderer.DrawLogo();
+            _renderer.DrawField(_field);
+            _renderer.DrawUserInstructions();
         }
     }
 }

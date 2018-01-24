@@ -32,7 +32,7 @@ namespace TicTacToe.Tests
             Assert.Equal(2, _game.Players.Count);
         }
 
-        private class ConsoleViewerSpy : ConsoleViewer
+        private class ConsoleViewerSpy : ConsoleRenderer
         {
             public int FieldSize { get; private set; }
 
@@ -41,7 +41,7 @@ namespace TicTacToe.Tests
                 this.FieldSize = field.SideSize;
             }
 
-            public override void ShowLogo()
+            public override void DrawLogo()
             {
             }
 

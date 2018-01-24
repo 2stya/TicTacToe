@@ -2,31 +2,31 @@
 
 namespace TicTacToe.Console.Tests
 {
-    public class ConsoleViewerTests
+    public class ConsoleRendererTests
     {
-        private readonly ConsoleViewer viewer;
+        private readonly ConsoleRenderer _renderer;
 
-        public ConsoleViewerTests()
+        public ConsoleRendererTests()
         {
-            viewer = new ConsoleViewer();
+            _renderer = new ConsoleRenderer();
         }
 
         [Fact]
-        public void PrepareStringToDrawField_OnCreation_ReturnsStringWithTopAndBottomBorders()
+        public void GetFieldRender_OnCreation_ReturnsStringWithTopAndBottomBorders()
         {
             const int size = 3;
             Field field = new Field(size);
-            string fieldDrawString = viewer.PrepareStringToDrawField(field);
+            string fieldDrawString = Render.GetFieldRender(field);
 
             Assert.StartsWith("┌-┬-┬-┐", fieldDrawString);
             Assert.EndsWith("└-┴-┴-┘", fieldDrawString);
         }
 
         [Fact]
-        public void PrepareStringToDrawLogo_OnCreation_ReturnsLogo()
+        public void GetLogoRender_OnCreation_ReturnsLogo()
         {
-            string actualLogo = viewer.PrepareStringToDrawLogo();
-            string expectedLogo = @"  .-----------------------------------------------------------------.
+            string actualLogo = Render.GetLogoRender();
+            const string expectedLogo = @"  .-----------------------------------------------------------------.
  /  .-.                                                         .-.  \
 |  /   \                                                       /   \  |
 | |\_.  |                    TIC TAC TOE                      |    /| |
@@ -42,10 +42,10 @@ namespace TicTacToe.Console.Tests
         }
 
         [Fact]
-        public void PrepareStringToDrawUserInstructions_OnCreation_ReturnsUserInstructions()
+        public void GetUserInstructionsRender_OnCreation_ReturnsUserInstructions()
         {
-            string actualInstructions = viewer.PrepareStringToDrawUserInstructions();
-            string expectedInstructions = @" 1|2|3
+            string actualInstructions = Render.GetUserInstructionsRender();
+            const string expectedInstructions = @" 1|2|3
  -----
  4|5|6
  -----

@@ -28,11 +28,18 @@ namespace TicTacToe.Console.Tests
         private class ConsoleRendererTestable : ConsoleRenderer
         {
             public string FieldRender;
+            public string LogoRender;
 
             protected override string GetFieldRender(Field field)
             {
                 FieldRender = base.GetFieldRender(field);
                 return FieldRender;
+            }
+
+            protected override string GetLogoRender()
+            {
+                LogoRender = base.GetLogoRender();
+                return LogoRender;
             }
         }
     }

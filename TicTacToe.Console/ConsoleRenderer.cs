@@ -88,7 +88,7 @@
             return fieldTop + "┐\n";
         }
 
-        protected string GetLogoRender()
+        protected virtual string GetLogoRender()
         {
             return @"  .-----------------------------------------------------------------.
  /  .-.                                                         .-.  \

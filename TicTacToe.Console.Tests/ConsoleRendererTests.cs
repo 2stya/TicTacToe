@@ -21,18 +21,18 @@ namespace TicTacToe.Console.Tests
             _renderer.DrawField(field);
 
             // Assert
-            Assert.StartsWith("┌-┬-┬-┐", _renderer._fieldRender);
-            Assert.EndsWith("└-┴-┴-┘", _renderer._fieldRender);
+            Assert.StartsWith("┌-┬-┬-┐", _renderer.FieldRender);
+            Assert.EndsWith("└-┴-┴-┘", _renderer.FieldRender);
         }
 
         private class ConsoleRendererTestable : ConsoleRenderer
         {
-            public string _fieldRender;
+            public string FieldRender;
 
             protected override string GetFieldRender(Field field)
             {
-                _fieldRender = base.GetFieldRender(field);
-                return _fieldRender;
+                FieldRender = base.GetFieldRender(field);
+                return FieldRender;
             }
         }
     }

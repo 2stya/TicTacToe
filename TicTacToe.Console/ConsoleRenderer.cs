@@ -100,7 +100,7 @@
   `---'                                                         `---'";
         }
 
-        protected string GetUserInstructionsRender()
+        protected virtual string GetUserInstructionsRender()
         {
             return " 1|2|3\r\n -----\r\n 4|5|6\r\n -----\r\n 7|8|9";
         }

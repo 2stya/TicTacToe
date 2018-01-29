@@ -4,53 +4,36 @@ namespace TicTacToe.Console.Tests
 {
     public class ConsoleRendererTests
     {
-        private readonly ConsoleRenderer _renderer;
+        private readonly ConsoleRendererTestable _renderer;
 
         public ConsoleRendererTests()
         {
-            _renderer = new ConsoleRenderer();
+            _renderer = new ConsoleRendererTestable();
         }
 
         [Fact]
-        public void GetFieldRender_OnCreation_ReturnsStringWithTopAndBottomBorders()
+        public void DrawField_OnRun_UseConsoleRenderedField()
         {
-            const int size = 3;
-            Field field = new Field(size);
-            string fieldDrawString = Render.GetFieldRender(field);
+            // Arrange
+            Field field = new Field(3);
 
-            Assert.StartsWith("┌-┬-┬-┐", fieldDrawString);
-            Assert.EndsWith("└-┴-┴-┘", fieldDrawString);
+            // Act
+            _renderer.DrawField(field);
+
+            // Assert
+            Assert.StartsWith("┌-┬-┬-┐", _renderer._fieldRender);
+            Assert.EndsWith("└-┴-┴-┘", _renderer._fieldRender);
         }
 
-        [Fact]
-        public void GetLogoRender_OnCreation_ReturnsLogo()
+        private class ConsoleRendererTestable : ConsoleRenderer
         {
-            string actualLogo = Render.GetLogoRender();
-            const string expectedLogo = @"  .-----------------------------------------------------------------.
- /  .-.                                                         .-.  \
-|  /   \                                                       /   \  |
-| |\_.  |                    TIC TAC TOE                      |    /| |
-|\|  | /|                                                     |\  | |/|
-| `---' |             Press Enter key to continue...          | `---' |
-|       |                                                     |       | 
-|       |-----------------------------------------------------|       |
-\       |                                                     |       /
- \     /                                                       \     /
-  `---'                                                         `---'";
+            public string _fieldRender;
 
-            Assert.Equal(expectedLogo, actualLogo);
-        }
-
-        [Fact]
-        public void GetUserInstructionsRender_OnCreation_ReturnsUserInstructions()
-        {
-            string actualInstructions = Render.GetUserInstructionsRender();
-            const string expectedInstructions = @" 1|2|3
- -----
- 4|5|6
- -----
- 7|8|9";
-            Assert.Equal(expectedInstructions, actualInstructions);
+            protected override string GetFieldRender(Field field)
+            {
+                _fieldRender = base.GetFieldRender(field);
+                return _fieldRender;
+            }
         }
     }
 }

@@ -11,9 +11,7 @@
 
         public virtual void DrawLogo()
         {
-            System.Console.Clear();
             System.Console.WriteLine(GetLogoRender());
-            System.Console.Read();
         }
 
         public virtual void DrawUserInstructions()

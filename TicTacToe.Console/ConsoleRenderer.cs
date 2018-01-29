@@ -5,7 +5,6 @@
         public virtual void DrawField(Field field)
         {
             string stringToDrawField = GetFieldRender(field);
-            System.Console.Clear();
             System.Console.WriteLine(stringToDrawField);
         }
 

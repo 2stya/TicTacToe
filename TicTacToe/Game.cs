@@ -4,18 +4,18 @@ namespace TicTacToe
 {
     public class Game
     {
-        protected readonly Field _field;
+        private readonly Field _field;
         private readonly IRenderer _renderer;
         public Players Players { get; }
-        const int size = 3;
+        private const int Size = 3;
 
         public Game(IRenderer renderer)
         {
             _renderer = renderer;
 
-            _field = new Field(size);
+            _field = new Field(Size);
             Players = new Players();
-            this._renderer = renderer;
+            _renderer = renderer;
         }
 
         public void StartGame()

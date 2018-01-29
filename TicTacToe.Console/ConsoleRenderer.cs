@@ -28,7 +28,7 @@
                    RenderFieldBottom(field.SideSize);
         }
 
-        protected string RenderFieldBottom(int size)
+        private string RenderFieldBottom(int size)
         {
             string fieldBottom = "└";
             for (int i = 0; i < size; i++)
@@ -44,7 +44,7 @@
             return fieldBottom + "┘";
         }
 
-        protected string RenderFieldPlayArea(Field field)
+        private string RenderFieldPlayArea(Field field)
         {
             string fieldPlayArea = "";
 
@@ -72,7 +72,7 @@
             return fieldPlayArea;
         }
 
-        protected string RenderFieldTop(int size)
+        private string RenderFieldTop(int size)
         {
             string fieldTop = "┌";
             for (int i = 0; i < size; i++)

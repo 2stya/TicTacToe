@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace TicTacToe
 {
@@ -36,9 +37,9 @@ namespace TicTacToe
 
         private static GameStatus GetHorizontalLinesStatus(Field field)
         {
-            for (var i = 0; i < field.SideSize; i++)
+            for (int i = 0; i < field.SideSize; i++)
             {
-                var horizontalLineMarks = field.GetHorizontalLineMarkTypes(i);
+                IEnumerable<MarkType> horizontalLineMarks = field.GetHorizontalLineMarkTypes(i);
 
                 if (horizontalLineMarks.All(m => m == MarkType.O))
                 {
@@ -56,9 +57,9 @@ namespace TicTacToe
 
         private static GameStatus GetVerticalLinesStatus(Field field)
         {
-            for (var i = 0; i < field.SideSize; i++)
+            for (int i = 0; i < field.SideSize; i++)
             {
-                var verticalLineMarks = field.GetVerticalLineMarkTypes(i);
+                IEnumerable<MarkType> verticalLineMarks = field.GetVerticalLineMarkTypes(i);
 
                 if (verticalLineMarks.All(m => m == MarkType.O))
                 {
@@ -76,7 +77,7 @@ namespace TicTacToe
 
         private static GameStatus GetMainDiagonalLineStatus(Field field)
         {
-            var mainDiagonalMarks = field.GetMainDiagonalLineMarkTypes();
+            IEnumerable<MarkType> mainDiagonalMarks = field.GetMainDiagonalLineMarkTypes();
 
             if (mainDiagonalMarks.All(m => m == MarkType.O))
             {
@@ -93,7 +94,7 @@ namespace TicTacToe
 
         private static GameStatus GetRightDiagonalLineStatus(Field field)
         {
-            var secondaryDiagonalLineMarkTypes = field.GetSecondaryDiagonalLineMarkTypes();
+            IEnumerable<MarkType> secondaryDiagonalLineMarkTypes = field.GetSecondaryDiagonalLineMarkTypes();
 
             if (secondaryDiagonalLineMarkTypes.All(m => m == MarkType.O))
             {

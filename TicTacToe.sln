@@ -7,9 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe", "TicTacToe\TicT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe.Console", "TicTacToe.Console\TicTacToe.Console.csproj", "{EC9E7C9A-77F6-4874-8A6A-4BD1339125E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Tests", "TicTacToe.Tests\TicTacToe.Tests.csproj", "{A6A1038E-228C-438A-BF0E-F20722D85A31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe.Tests", "TicTacToe.Tests\TicTacToe.Tests.csproj", "{A6A1038E-228C-438A-BF0E-F20722D85A31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Console.Tests", "TicTacToe.Console.Tests\TicTacToe.Console.Tests.csproj", "{AAE4DDAF-463C-4EB4-B385-A3F400DBABC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe.Console.Tests", "TicTacToe.Console.Tests\TicTacToe.Console.Tests.csproj", "{AAE4DDAF-463C-4EB4-B385-A3F400DBABC5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CA1F6416-2357-4654-BC7D-E785A0952F6A}"
+	ProjectSection(SolutionItems) = preProject
+		.travis.yml = .travis.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

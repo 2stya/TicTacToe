@@ -4,3 +4,4 @@ solution: TicTacToe.sln
 dotnet: 2.0.5
 script:
  - dotnet restore
+ - dotnet build

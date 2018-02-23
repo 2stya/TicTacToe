@@ -2,6 +2,7 @@ language: csharp
 solution: TicTacToe.sln
 
 dotnet: 2.0
+mono: none
 script:
  - dotnet restore
  - dotnet build

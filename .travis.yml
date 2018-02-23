@@ -2,7 +2,7 @@ language: csharp
 sudo: required  
 solution: TicTacToe.sln
 
-dotnet: 2.0
+dotnet: 2.0.5
 mono: none
 script:
  - dotnet restore
